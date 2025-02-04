@@ -11,7 +11,7 @@ final router = GoRouter(
       name: 'login',
       pageBuilder: (context, state) {
         return MaterialPage(
-          child: LoginPage(title: 'Pokedex'),
+          child: LoginPage(),
         );
       },
     ),
