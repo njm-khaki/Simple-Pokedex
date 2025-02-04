@@ -1,6 +1,6 @@
 # Flutter-Demo-Mock-App
 
-Demo app using Axios mocking in Flutter
+Demo app using Dio mocking in Flutter
 
 ## 概要
 
