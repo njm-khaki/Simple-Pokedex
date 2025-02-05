@@ -109,7 +109,7 @@ class __$$UncertifiedStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UncertifiedStateImpl implements _UncertifiedState {
-  _$UncertifiedStateImpl({this.mailAddress = '', this.password = ''});
+  const _$UncertifiedStateImpl({this.mailAddress = '', this.password = ''});
 
   @override
   @JsonKey()
@@ -148,8 +148,9 @@ class _$UncertifiedStateImpl implements _UncertifiedState {
 }
 
 abstract class _UncertifiedState implements UncertifiedState {
-  factory _UncertifiedState({final String mailAddress, final String password}) =
-      _$UncertifiedStateImpl;
+  const factory _UncertifiedState(
+      {final String mailAddress,
+      final String password}) = _$UncertifiedStateImpl;
 
   @override
   String get mailAddress;

@@ -1,1 +1,1 @@
-abstract class LoginPageState {}
+// sealed class LoginPageState {}
