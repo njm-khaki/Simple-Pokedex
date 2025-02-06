@@ -1,4 +1,4 @@
-import 'package:flutter_demo_mock_app/models/pokemon/pokemon_item/pokemon_item.dart';
+import 'package:flutter_demo_mock_app/models/pokemon_detail/pokemon_detail.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'pokedex_page_state.freezed.dart';
@@ -13,6 +13,6 @@ class PokedexLoading extends PokedexPageState with _$PokedexLoading {
 @freezed
 class PokedexLoaded extends PokedexPageState with _$PokedexLoaded {
   const factory PokedexLoaded({
-    @Default([]) List<PokemonItem> pokemons,
+    @Default([]) List<PokemonDetail> pokemons,
   }) = _PokedexLoaded;
 }

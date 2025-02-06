@@ -17,17 +17,15 @@ class LoadedContents extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return ListView(
       children: state.pokemons
-          .asMap()
-          .entries
           .map(
-            (entry) => Column(
+            (poke) => Column(
               children: [
                 ListTile(
                   leading: Image.network(
-                    entry.value.url,
+                    poke.sprites.backDefault ?? "",
                   ),
                   title: Text(
-                    entry.value.name,
+                    poke.name,
                   ),
                   onTap: () {},
                 ),

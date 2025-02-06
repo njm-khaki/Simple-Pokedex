@@ -15,6 +15,7 @@ class PokedexPage extends ConsumerStatefulWidget {
 class _PokedexState extends ConsumerState<PokedexPage> {
   @override
   void initState() {
+    super.initState();
     final notifier = ref.read(pokedexProvider.notifier);
     notifier.onInitState();
   }
