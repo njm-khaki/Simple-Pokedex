@@ -39,7 +39,7 @@ class PokedexState extends Notifier<PokedexPageState>
           responseType: ResponseType.plain,
         ),
       );
-      
+
       final poke = PokemonDetail.fromJson(
         jsonDecode(
           res.data.toString(),
@@ -60,19 +60,6 @@ class PokedexState extends Notifier<PokedexPageState>
         );
       }
     }
-
-    // state = PokedexLoaded(
-    //   pokemons: data.results
-    //       .asMap()
-    //       .entries
-    //       .map(
-    //         (entry) => entry.value.copyWith(
-    //           url:
-    //               'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${entry.key + 1}.png',
-    //         ),
-    //       )
-    //       .toList(),
-    // );
   }
 }
 
