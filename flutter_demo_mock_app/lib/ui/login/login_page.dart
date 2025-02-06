@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_demo_mock_app/models/login/uncertified_state.dart';
+import 'package:flutter_demo_mock_app/models/login/login_page_state.dart';
 import 'package:flutter_demo_mock_app/states/login/login_state.dart';
 import 'package:flutter_demo_mock_app/ui/login/templates/uncertified_contents.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

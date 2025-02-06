@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_demo_mock_app/models/login/uncertified_state.dart';
+import 'package:flutter_demo_mock_app/models/login/login_page_state.dart';
 import 'package:flutter_demo_mock_app/states/login/usecase/uncertified_case.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -26,7 +26,7 @@ class UncertifiedContents extends ConsumerWidget {
           onChanged: notifier.onChangePassword,
         ),
         ElevatedButton(
-          onPressed: notifier.onClickLoginButton,
+          onPressed: () => notifier.onClickLoginButton(context),
           child: Text('login'),
         )
       ],

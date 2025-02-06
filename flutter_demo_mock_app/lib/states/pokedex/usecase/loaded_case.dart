@@ -1,0 +1,1 @@
+abstract mixin class LoadedCase {}
