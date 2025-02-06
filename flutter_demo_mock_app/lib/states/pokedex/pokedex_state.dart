@@ -15,11 +15,6 @@ class PokedexState extends Notifier<PokedexPageState>
     );
     return PokedexLoading();
   }
-
-  @override
-  Future<void> onClickLoadButton() async {
-    print('on click load button');
-  }
 }
 
 final pokedexProvider = NotifierProvider<PokedexState, PokedexPageState>(
