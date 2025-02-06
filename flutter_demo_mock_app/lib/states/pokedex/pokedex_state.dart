@@ -8,7 +8,7 @@ class PokedexState extends Notifier<PokedexPageState>
   @override
   PokedexPageState build() {
     Future.delayed(
-      Duration(seconds: 5),
+      Duration(seconds: 2),
       () {
         state = PokedexLoaded();
       },

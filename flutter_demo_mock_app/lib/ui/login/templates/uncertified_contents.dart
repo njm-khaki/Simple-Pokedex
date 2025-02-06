@@ -19,9 +19,15 @@ class UncertifiedContents extends ConsumerWidget {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         TextField(
+          decoration: InputDecoration(
+            hintText: 'mail address',
+          ),
           onChanged: notifier.onChangeMailAdress,
         ),
         TextField(
+          decoration: InputDecoration(
+            hintText: 'password',
+          ),
           obscureText: true,
           onChanged: notifier.onChangePassword,
         ),
