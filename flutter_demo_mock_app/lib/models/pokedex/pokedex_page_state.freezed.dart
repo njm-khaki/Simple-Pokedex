@@ -82,13 +82,23 @@ abstract class _PokedexLoading implements PokedexLoading {
 }
 
 /// @nodoc
-mixin _$PokedexLoaded {}
+mixin _$PokedexLoaded {
+  List<PokemonItem> get pokemons => throw _privateConstructorUsedError;
+
+  /// Create a copy of PokedexLoaded
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $PokedexLoadedCopyWith<PokedexLoaded> get copyWith =>
+      throw _privateConstructorUsedError;
+}
 
 /// @nodoc
 abstract class $PokedexLoadedCopyWith<$Res> {
   factory $PokedexLoadedCopyWith(
           PokedexLoaded value, $Res Function(PokedexLoaded) then) =
       _$PokedexLoadedCopyWithImpl<$Res, PokedexLoaded>;
+  @useResult
+  $Res call({List<PokemonItem> pokemons});
 }
 
 /// @nodoc
@@ -103,13 +113,29 @@ class _$PokedexLoadedCopyWithImpl<$Res, $Val extends PokedexLoaded>
 
   /// Create a copy of PokedexLoaded
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? pokemons = null,
+  }) {
+    return _then(_value.copyWith(
+      pokemons: null == pokemons
+          ? _value.pokemons
+          : pokemons // ignore: cast_nullable_to_non_nullable
+              as List<PokemonItem>,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$PokedexLoadedImplCopyWith<$Res> {
+abstract class _$$PokedexLoadedImplCopyWith<$Res>
+    implements $PokedexLoadedCopyWith<$Res> {
   factory _$$PokedexLoadedImplCopyWith(
           _$PokedexLoadedImpl value, $Res Function(_$PokedexLoadedImpl) then) =
       __$$PokedexLoadedImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<PokemonItem> pokemons});
 }
 
 /// @nodoc
@@ -122,28 +148,72 @@ class __$$PokedexLoadedImplCopyWithImpl<$Res>
 
   /// Create a copy of PokedexLoaded
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? pokemons = null,
+  }) {
+    return _then(_$PokedexLoadedImpl(
+      pokemons: null == pokemons
+          ? _value._pokemons
+          : pokemons // ignore: cast_nullable_to_non_nullable
+              as List<PokemonItem>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$PokedexLoadedImpl implements _PokedexLoaded {
-  const _$PokedexLoadedImpl();
+  const _$PokedexLoadedImpl({final List<PokemonItem> pokemons = const []})
+      : _pokemons = pokemons;
+
+  final List<PokemonItem> _pokemons;
+  @override
+  @JsonKey()
+  List<PokemonItem> get pokemons {
+    if (_pokemons is EqualUnmodifiableListView) return _pokemons;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_pokemons);
+  }
 
   @override
   String toString() {
-    return 'PokedexLoaded()';
+    return 'PokedexLoaded(pokemons: $pokemons)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$PokedexLoadedImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$PokedexLoadedImpl &&
+            const DeepCollectionEquality().equals(other._pokemons, _pokemons));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_pokemons));
+
+  /// Create a copy of PokedexLoaded
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PokedexLoadedImplCopyWith<_$PokedexLoadedImpl> get copyWith =>
+      __$$PokedexLoadedImplCopyWithImpl<_$PokedexLoadedImpl>(this, _$identity);
 }
 
 abstract class _PokedexLoaded implements PokedexLoaded {
-  const factory _PokedexLoaded() = _$PokedexLoadedImpl;
+  const factory _PokedexLoaded({final List<PokemonItem> pokemons}) =
+      _$PokedexLoadedImpl;
+
+  @override
+  List<PokemonItem> get pokemons;
+
+  /// Create a copy of PokedexLoaded
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$PokedexLoadedImplCopyWith<_$PokedexLoadedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

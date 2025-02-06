@@ -16,21 +16,26 @@ class LoadedContents extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return ListView(
-      children: List.generate(
-        151,
-        (value) => Column(
-          children: [
-            ListTile(
-              leading: Image.network(
-                'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${value + 1}.png',
-              ),
-              title: Text('Poke ${value + 1}'),
-              onTap: () {},
+      children: state.pokemons
+          .asMap()
+          .entries
+          .map(
+            (entry) => Column(
+              children: [
+                ListTile(
+                  leading: Image.network(
+                    entry.value.url,
+                  ),
+                  title: Text(
+                    entry.value.name,
+                  ),
+                  onTap: () {},
+                ),
+                const Divider(),
+              ],
             ),
-            const Divider(),
-          ],
-        ),
-      ),
+          )
+          .toList(),
     );
   }
 }

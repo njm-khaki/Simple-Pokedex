@@ -5,11 +5,22 @@ import 'package:flutter_demo_mock_app/ui/pokedex/templates/loaded_contents.dart'
 import 'package:flutter_demo_mock_app/ui/pokedex/templates/loading_contents.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class PokedexPage extends ConsumerWidget {
+class PokedexPage extends ConsumerStatefulWidget {
   const PokedexPage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() => _PokedexState();
+}
+
+class _PokedexState extends ConsumerState<PokedexPage> {
+  @override
+  void initState() {
+    final notifier = ref.read(pokedexProvider.notifier);
+    notifier.onInitState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final state = ref.watch(pokedexProvider);
     final notifier = ref.read(pokedexProvider.notifier);
 
