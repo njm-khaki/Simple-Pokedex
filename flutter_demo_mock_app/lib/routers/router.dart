@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo_mock_app/models/pokemon_detail/pokemon_detail.dart';
 import 'package:flutter_demo_mock_app/ui/login/login_page.dart';
 import 'package:flutter_demo_mock_app/ui/pokedex/pokedex_page.dart';
+import 'package:flutter_demo_mock_app/ui/pokemon_detail/pokemon_detail_page.dart';
 import 'package:go_router/go_router.dart';
 
 /// 画面遷移設定
@@ -16,9 +18,18 @@ final router = GoRouter(
     ),
     GoRoute(
       path: '/pokedex',
-      name: '/pokedex',
+      name: 'pokedex',
       pageBuilder: (context, state) => MaterialPage(
         child: PokedexPage(),
+      ),
+    ),
+    GoRoute(
+      path: '/pokemon_detail',
+      name: 'poke_detail',
+      pageBuilder: (context, state) => MaterialPage(
+        child: PokemonDetailPage(
+          pokemon: state.extra as PokemonDetail,
+        ),
       ),
     ),
   ],

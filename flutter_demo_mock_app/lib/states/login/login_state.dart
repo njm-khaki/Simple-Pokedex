@@ -45,7 +45,7 @@ class LoginState extends Notifier<LoginPageState> with UncertifiedCase {
     final submit = (state as UncertifiedState);
 
     print('click login button!!\n${submit.toString()}');
-    context.go('/pokedex');
+    context.pushReplacementNamed('pokedex');
   }
 }
 

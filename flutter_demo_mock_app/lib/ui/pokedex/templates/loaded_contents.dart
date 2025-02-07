@@ -22,12 +22,15 @@ class LoadedContents extends ConsumerWidget {
               children: [
                 ListTile(
                   leading: Image.network(
-                    poke.sprites.backDefault ?? "",
+                    poke.sprites.frontDefault ?? "",
                   ),
                   title: Text(
                     poke.name,
                   ),
-                  onTap: () {},
+                  onTap: () => notifier.onTapPokemon(
+                    context,
+                    poke,
+                  ),
                 ),
                 const Divider(),
               ],
