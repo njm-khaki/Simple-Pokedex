@@ -1,4 +1,4 @@
-import 'package:flutter_demo_mock_app/models/pokemon/pokemon_item/pokemon_item.dart';
+import 'package:flutter_demo_mock_app/response_data/pokemon/pokemon_item/pokemon_item.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'pokemon.freezed.dart';

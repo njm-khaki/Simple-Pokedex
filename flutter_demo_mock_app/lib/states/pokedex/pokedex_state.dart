@@ -3,16 +3,16 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo_mock_app/models/pokedex/pokedex_page_state.dart';
-import 'package:flutter_demo_mock_app/models/pokemon/pokemon.dart';
-import 'package:flutter_demo_mock_app/models/pokemon/pokemon_item/pokemon_item.dart';
-import 'package:flutter_demo_mock_app/models/pokemon_detail/pokemon_detail.dart';
-import 'package:flutter_demo_mock_app/states/pokedex/usecase/loaded_case.dart';
-import 'package:flutter_demo_mock_app/states/pokedex/usecase/loading_case.dart';
+import 'package:flutter_demo_mock_app/response_data/pokemon/pokemon.dart';
+import 'package:flutter_demo_mock_app/response_data/pokemon/pokemon_item/pokemon_item.dart';
+import 'package:flutter_demo_mock_app/response_data/pokemon_detail/pokemon_detail.dart';
+import 'package:flutter_demo_mock_app/states/pokedex/usecase/pokedex_loaded_case.dart';
+import 'package:flutter_demo_mock_app/states/pokedex/usecase/pokedex_loading_case.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 class PokedexState extends Notifier<PokedexPageState>
-    with LoadingCase, LoadedCase {
+    with PokedexLoadingCase, PokedexLoadedCase {
   final _dio = Dio();
 
   @override

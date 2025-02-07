@@ -1,4 +1,4 @@
-import 'package:flutter_demo_mock_app/models/pokemon_detail/sprite/pokemon_sprite.dart';
+import 'package:flutter_demo_mock_app/response_data/pokemon_detail/sprite/pokemon_sprite.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'pokemon_detail.freezed.dart';

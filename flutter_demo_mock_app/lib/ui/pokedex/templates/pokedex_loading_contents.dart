@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo_mock_app/models/pokedex/pokedex_page_state.dart';
-import 'package:flutter_demo_mock_app/states/pokedex/usecase/loaded_case.dart';
+import 'package:flutter_demo_mock_app/states/pokedex/usecase/pokedex_loaded_case.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class LoadingContents extends ConsumerWidget {
-  const LoadingContents({
+class PokedexLoadingContents extends ConsumerWidget {
+  const PokedexLoadingContents({
     super.key,
     required this.state,
     required this.notifier,
   });
 
   final PokedexLoading state;
-  final LoadedCase notifier;
+  final PokedexLoadedCase notifier;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
