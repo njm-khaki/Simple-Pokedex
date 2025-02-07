@@ -50,5 +50,4 @@ flutter run
 ### 設計資料
 
 - 以下に大まかな基本設計について記載
-
-> documents/flutterアプリ_基本設計.md
+    - [flutterアプリ_基本設計](./documents/flutterアプリ_基本設計.md)
