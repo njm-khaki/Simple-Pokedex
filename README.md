@@ -6,6 +6,8 @@ Demo app using Dio mocking in Flutter
   - [概要](#概要)
   - [環境](#環境)
   - [環境構築・実行方法](#環境構築実行方法)
+  - [資料](#資料)
+    - [設計資料](#設計資料)
 
 ## 概要
 
@@ -42,3 +44,11 @@ flutter pub get
 ```bash
 flutter run
 ```
+
+## 資料
+
+### 設計資料
+
+- 以下に大まかな基本設計について記載
+
+> documents/flutterアプリ_基本設計.md
