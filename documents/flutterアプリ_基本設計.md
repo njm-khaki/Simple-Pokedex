@@ -24,7 +24,10 @@ Flutterアプリの基本設計を簡単に示す
 ![state machine image](images/state_machine.png)
 
 ### クラス図
-- 記載中
+
+- 詳細については記載中
+
+![alt text](images/class_image.png)
 
 ## 参考情報
 
