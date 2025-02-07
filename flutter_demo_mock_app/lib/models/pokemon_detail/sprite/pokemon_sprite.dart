@@ -5,6 +5,8 @@ part 'pokemon_sprite.g.dart';
 
 @freezed
 class PokemonSprite with _$PokemonSprite {
+  const PokemonSprite._();
+
   const factory PokemonSprite({
     @JsonKey(name: 'back_default') @Default(null) String? backDefault,
     @JsonKey(name: 'back_female') @Default(null) String? backFemale,
@@ -18,4 +20,15 @@ class PokemonSprite with _$PokemonSprite {
 
   factory PokemonSprite.fromJson(Map<String, dynamic> json) =>
       _$PokemonSpriteFromJson(json);
+
+  List<String> get toList => [
+      frontDefault,
+      frontFemale,
+      frontShiny,
+      frontShinyFemale,
+      backDefault,
+      backFemale,
+      backShiny,
+      backShinyFemale
+  ].whereType<String>().toList();
 }

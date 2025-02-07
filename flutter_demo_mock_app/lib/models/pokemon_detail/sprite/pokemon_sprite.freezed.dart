@@ -205,7 +205,7 @@ class __$$PokemonSpriteImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$PokemonSpriteImpl implements _PokemonSprite {
+class _$PokemonSpriteImpl extends _PokemonSprite {
   const _$PokemonSpriteImpl(
       {@JsonKey(name: 'back_default') this.backDefault = null,
       @JsonKey(name: 'back_female') this.backFemale = null,
@@ -214,7 +214,8 @@ class _$PokemonSpriteImpl implements _PokemonSprite {
       @JsonKey(name: 'front_default') this.frontDefault = null,
       @JsonKey(name: 'front_female') this.frontFemale = null,
       @JsonKey(name: 'front_shiny') this.frontShiny = null,
-      @JsonKey(name: 'front_shiny_female') this.frontShinyFemale = null});
+      @JsonKey(name: 'front_shiny_female') this.frontShinyFemale = null})
+      : super._();
 
   factory _$PokemonSpriteImpl.fromJson(Map<String, dynamic> json) =>
       _$$PokemonSpriteImplFromJson(json);
@@ -301,7 +302,7 @@ class _$PokemonSpriteImpl implements _PokemonSprite {
   }
 }
 
-abstract class _PokemonSprite implements PokemonSprite {
+abstract class _PokemonSprite extends PokemonSprite {
   const factory _PokemonSprite(
       {@JsonKey(name: 'back_default') final String? backDefault,
       @JsonKey(name: 'back_female') final String? backFemale,
@@ -312,6 +313,7 @@ abstract class _PokemonSprite implements PokemonSprite {
       @JsonKey(name: 'front_shiny') final String? frontShiny,
       @JsonKey(name: 'front_shiny_female')
       final String? frontShinyFemale}) = _$PokemonSpriteImpl;
+  const _PokemonSprite._() : super._();
 
   factory _PokemonSprite.fromJson(Map<String, dynamic> json) =
       _$PokemonSpriteImpl.fromJson;

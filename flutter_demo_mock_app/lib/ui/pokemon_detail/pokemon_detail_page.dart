@@ -13,42 +13,33 @@ class PokemonDetailPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final sprites = [
-      pokemon.sprites.frontDefault,
-      pokemon.sprites.frontFemale,
-      pokemon.sprites.frontShiny,
-      pokemon.sprites.frontShinyFemale,
-      pokemon.sprites.backDefault,
-      pokemon.sprites.backFemale,
-      pokemon.sprites.backShiny,
-      pokemon.sprites.backShinyFemale,
-    ].where((url) => url != null).toList();
 
     return Scaffold(
       appBar: AppBar(
         title: Text(pokemon.name),
       ),
-      body: Container(
-        alignment: Alignment.center,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CarouselSlider.builder(
-              options: CarouselOptions(
-                initialPage: 1,
-                viewportFraction: 1,
-                enableInfiniteScroll: false,
+      body: ListView(
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              CarouselSlider.builder(
+                options: CarouselOptions(
+                  height: MediaQuery.of(context).size.height / 4,
+                  enableInfiniteScroll: false,
+                ),
+                itemCount: pokemon.sprites.toList.length,
+                itemBuilder: (context, index, realIndex) {
+                  return Image.network(
+                    pokemon.sprites.toList[index],
+                    fit: BoxFit.contain,
+                  );
+                },
               ),
-              itemCount: sprites.length,
-              itemBuilder: (context, index, realIndex) {
-                return Image.network(
-                  sprites[index] ?? "",
-                );
-              },
-            ),
-            Text(pokemon.name),
-          ],
-        ),
+              Text(pokemon.name),
+            ],
+          ),
+        ],
       ),
     );
   }
