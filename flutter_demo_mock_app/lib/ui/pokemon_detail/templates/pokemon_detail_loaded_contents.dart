@@ -5,6 +5,7 @@ import 'package:flutter_demo_mock_app/response_data/pokemon_detail/pokemon_detai
 import 'package:flutter_demo_mock_app/states/pokemon_detail/usecase/pokemon_detail_loaded_case.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+/// ポケモン詳細 読み込み済状態 UI
 class PokemonDetailLoadedContents extends ConsumerWidget {
   const PokemonDetailLoadedContents({
     super.key,
@@ -13,8 +14,11 @@ class PokemonDetailLoadedContents extends ConsumerWidget {
     required this.pokemon,
   });
 
+  // ポケモン詳細 読み込み済状態情報
   final PokemonDetailLoaded state;
+  // ポケモン詳細 読み込み済状態 ユーザーイベント
   final PokemonDetailLoadedCase notifier;
+  // 表示するポケモンの詳細情報
   final PokemonDetail pokemon;
 
   @override
@@ -24,6 +28,7 @@ class PokemonDetailLoadedContents extends ConsumerWidget {
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
+            // ポケモンの画像をスライドで表示する
             CarouselSlider.builder(
               options: CarouselOptions(
                 height: MediaQuery.of(context).size.height / 4,

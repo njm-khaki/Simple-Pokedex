@@ -4,6 +4,7 @@ import 'package:flutter_demo_mock_app/response_data/pokemon_detail/pokemon_detai
 import 'package:flutter_demo_mock_app/states/pokedex/usecase/pokedex_loaded_case.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+/// ポケモン図鑑 読み込み済状態 UI
 class PokedexLoadedContents extends ConsumerWidget {
   const PokedexLoadedContents({
     super.key,
@@ -11,7 +12,9 @@ class PokedexLoadedContents extends ConsumerWidget {
     required this.notifier,
   });
 
+  // 読み込み済状態情報
   final PokedexLoaded state;
+  // 読み込み済状態 ユーザーイベント
   final PokedexLoadedCase notifier;
 
   @override

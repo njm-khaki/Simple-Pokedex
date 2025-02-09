@@ -5,6 +5,7 @@ import 'package:flutter_demo_mock_app/ui/pokedex/templates/pokedex_loaded_conten
 import 'package:flutter_demo_mock_app/ui/pokedex/templates/pokedex_loading_contents.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+/// ポケモン図鑑画面
 class PokedexPage extends ConsumerStatefulWidget {
   const PokedexPage({super.key});
 
@@ -12,7 +13,9 @@ class PokedexPage extends ConsumerStatefulWidget {
   ConsumerState<ConsumerStatefulWidget> createState() => _PokedexState();
 }
 
+/// ポケモン図鑑画面 状態
 class _PokedexState extends ConsumerState<PokedexPage> {
+  /// 画面表示時の処理
   @override
   void initState() {
     super.initState();
@@ -22,6 +25,7 @@ class _PokedexState extends ConsumerState<PokedexPage> {
 
   @override
   Widget build(BuildContext context) {
+    // ポケモン図鑑画面 状態を取得
     final state = ref.watch(pokedexProvider);
     final notifier = ref.read(pokedexProvider.notifier);
 
@@ -30,10 +34,12 @@ class _PokedexState extends ConsumerState<PokedexPage> {
         title: Text('Pokedex'),
       ),
       body: switch (state) {
+        // ローディング状態
         PokedexLoading() => PokedexLoadingContents(
             state: state,
             notifier: notifier,
           ),
+        // 読み込み済状態
         PokedexLoaded() => PokedexLoadedContents(
             state: state,
             notifier: notifier,

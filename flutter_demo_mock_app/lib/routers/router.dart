@@ -5,7 +5,7 @@ import 'package:flutter_demo_mock_app/ui/pokedex/pokedex_page.dart';
 import 'package:flutter_demo_mock_app/ui/pokemon_detail/pokemon_detail_page.dart';
 import 'package:go_router/go_router.dart';
 
-/// 画面遷移設定
+/// 画面遷移設定 TODO: ルーティング設定 設計は要検討
 final router = GoRouter(
   initialLocation: '/',
   routes: [
