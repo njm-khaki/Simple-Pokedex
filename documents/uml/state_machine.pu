@@ -3,7 +3,7 @@ left to right direction
 
 state XXX画面 {
     [*] -down-> 初期化中
-    初期化中 -down-> 読込済み済
+    初期化中 -down-> 読込済み済 : 読み込み完了
     読込済み済 -down-> リロード中 : 再読込ボタン押下
     リロード中 -down-> 読込済み済 : 読込完了
 }
