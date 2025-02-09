@@ -1,0 +1,132 @@
+@startuml
+
+class App {}
+
+package routes {
+    class GoRouter {}
+}
+
+package ui {
+    class XXXPage {}
+
+    folder "templates" as Templates {
+        class InitializationContens {
+            state: Initialization
+            notifier: InitializationCase
+        }
+        ' class InitializationErrorContens {
+        '     state: InitializationError
+        '     notifier: InitializationErrorCase
+        ' }
+        class LoadedContents {
+            state: Loaded
+            notifier: LoadedCase
+        }
+        class ReLoadingContents {
+            state: ReLoading
+            notifier: ReLoadingCase
+        }
+        ' class ReLoadErrorContents {
+        '     state: ReLoadError
+        '     notifier: ReLoadErrorCase
+        ' }
+    }
+}
+
+package states {
+    class XXXState {
+        state: XXXPageState
+    }
+}
+
+package flutter_rivrepod {
+    abstract class Notifier<XXXPageState> {}
+}
+
+package models {
+    class XXXPageState {}
+    note left
+    画面の状態を示すsealedクラス
+    各状態のクラスに継承させる
+    end note
+
+    class Initialization {}
+
+    ' class InitializationError {}
+
+    class Loaded {}
+
+    class ReLoading {}
+
+    ' class ReLoadError {}
+}
+
+folder "usecase" as Usecase {
+    abstract class InitializationCase {}
+
+    ' abstract class InitializationErrorCase {}
+
+    abstract class LoadedCase {}
+
+    abstract class ReLoadingCase {}
+
+    ' abstract class ReLoadErrorCase {}
+}
+
+folder "freezed_annotation" as FreezedAnnotation {
+    annotation freezed
+}
+
+App --> GoRouter
+GoRouter --> XXXPage
+' XXXPage --> XXXState
+states --> ui
+
+XXXPageState <|-- Initialization
+' XXXPageState <|-- InitializationError
+XXXPageState <|-- Loaded
+XXXPageState <|-- ReLoading
+' XXXPageState <|-- ReLoadError
+
+' XXXState <|-- Notifier
+XXXPageState -- XXXState : includes >
+
+XXXState <|.. InitializationCase
+' XXXState <|.. InitializationErrorCase
+XXXState <|.. LoadedCase
+XXXState <|.. ReLoadingCase
+' XXXState <|.. ReLoadErrorCase
+
+XXXPage -- InitializationContens : includes <
+' XXXPage - InitializationErrorContens : includes <
+XXXPage -- LoadedContents : includes <
+XXXPage -- ReLoadingContents : includes <
+' XXXPage - ReLoadErrorContents : includes <
+
+' InitializationContens -- Initialization : includes >
+' InitializationContens -- InitializationCase : includes >
+
+' InitializationErrorContens -- InitializationError : includes >
+' InitializationErrorContens -- InitializationErrorCase : includes >
+
+' LoadedContents -- Loaded : includes >
+' LoadedContents -- LoadedCase : includes >
+
+' ReLoadingContents -- Reloading : includes >
+' ReLoadingContents -- ReLoadingCase : includes >
+
+' ReLoadErrorContents -- ReLoadError : includes >
+' ReLoadErrorContents -- ReLoadErrorCase : includes >
+
+models <.. FreezedAnnotation
+states <.. flutter_rivrepod
+
+note "immutableなモデルクラスを自動生成する" as FreezedAnnotationComments
+FreezedAnnotation .. FreezedAnnotationComments
+
+note "各状態に応じた値、ユーザーイベントのみを参照できるようにする" as TemplatesComments
+Templates .. TemplatesComments
+
+note "各状態でのユーザーイベントを定義する\n適用先にオーバーライドで実装を強制させる" as UsecaseComments
+Usecase .. UsecaseComments
+@enduml

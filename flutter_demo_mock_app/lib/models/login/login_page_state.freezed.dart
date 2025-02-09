@@ -16,7 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$UncertifiedState {
-  String get mailAddress => throw _privateConstructorUsedError;
+// メールアドレス
+  String get mailAddress => throw _privateConstructorUsedError; // パスワード
   String get password => throw _privateConstructorUsedError;
 
   /// Create a copy of UncertifiedState
@@ -111,9 +112,11 @@ class __$$UncertifiedStateImplCopyWithImpl<$Res>
 class _$UncertifiedStateImpl implements _UncertifiedState {
   const _$UncertifiedStateImpl({this.mailAddress = '', this.password = ''});
 
+// メールアドレス
   @override
   @JsonKey()
   final String mailAddress;
+// パスワード
   @override
   @JsonKey()
   final String password;
@@ -152,8 +155,9 @@ abstract class _UncertifiedState implements UncertifiedState {
       {final String mailAddress,
       final String password}) = _$UncertifiedStateImpl;
 
+// メールアドレス
   @override
-  String get mailAddress;
+  String get mailAddress; // パスワード
   @override
   String get password;
 

@@ -83,7 +83,8 @@ abstract class _PokedexLoading implements PokedexLoading {
 
 /// @nodoc
 mixin _$PokedexLoaded {
-  List<PokemonItem> get pokemons => throw _privateConstructorUsedError;
+// ポケモン詳細情報リスト
+  List<PokemonDetail> get pokemons => throw _privateConstructorUsedError;
 
   /// Create a copy of PokedexLoaded
   /// with the given fields replaced by the non-null parameter values.
@@ -98,7 +99,7 @@ abstract class $PokedexLoadedCopyWith<$Res> {
           PokedexLoaded value, $Res Function(PokedexLoaded) then) =
       _$PokedexLoadedCopyWithImpl<$Res, PokedexLoaded>;
   @useResult
-  $Res call({List<PokemonItem> pokemons});
+  $Res call({List<PokemonDetail> pokemons});
 }
 
 /// @nodoc
@@ -122,7 +123,7 @@ class _$PokedexLoadedCopyWithImpl<$Res, $Val extends PokedexLoaded>
       pokemons: null == pokemons
           ? _value.pokemons
           : pokemons // ignore: cast_nullable_to_non_nullable
-              as List<PokemonItem>,
+              as List<PokemonDetail>,
     ) as $Val);
   }
 }
@@ -135,7 +136,7 @@ abstract class _$$PokedexLoadedImplCopyWith<$Res>
       __$$PokedexLoadedImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<PokemonItem> pokemons});
+  $Res call({List<PokemonDetail> pokemons});
 }
 
 /// @nodoc
@@ -157,7 +158,7 @@ class __$$PokedexLoadedImplCopyWithImpl<$Res>
       pokemons: null == pokemons
           ? _value._pokemons
           : pokemons // ignore: cast_nullable_to_non_nullable
-              as List<PokemonItem>,
+              as List<PokemonDetail>,
     ));
   }
 }
@@ -165,13 +166,15 @@ class __$$PokedexLoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$PokedexLoadedImpl implements _PokedexLoaded {
-  const _$PokedexLoadedImpl({final List<PokemonItem> pokemons = const []})
+  const _$PokedexLoadedImpl({final List<PokemonDetail> pokemons = const []})
       : _pokemons = pokemons;
 
-  final List<PokemonItem> _pokemons;
+// ポケモン詳細情報リスト
+  final List<PokemonDetail> _pokemons;
+// ポケモン詳細情報リスト
   @override
   @JsonKey()
-  List<PokemonItem> get pokemons {
+  List<PokemonDetail> get pokemons {
     if (_pokemons is EqualUnmodifiableListView) return _pokemons;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_pokemons);
@@ -204,11 +207,12 @@ class _$PokedexLoadedImpl implements _PokedexLoaded {
 }
 
 abstract class _PokedexLoaded implements PokedexLoaded {
-  const factory _PokedexLoaded({final List<PokemonItem> pokemons}) =
+  const factory _PokedexLoaded({final List<PokemonDetail> pokemons}) =
       _$PokedexLoadedImpl;
 
+// ポケモン詳細情報リスト
   @override
-  List<PokemonItem> get pokemons;
+  List<PokemonDetail> get pokemons;
 
   /// Create a copy of PokedexLoaded
   /// with the given fields replaced by the non-null parameter values.

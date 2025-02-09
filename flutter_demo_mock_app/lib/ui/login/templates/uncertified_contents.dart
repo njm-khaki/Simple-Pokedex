@@ -3,6 +3,7 @@ import 'package:flutter_demo_mock_app/models/login/login_page_state.dart';
 import 'package:flutter_demo_mock_app/states/login/usecase/uncertified_case.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+/// 未ログイン状態 UI表示
 class UncertifiedContents extends ConsumerWidget {
   const UncertifiedContents({
     super.key,
@@ -10,7 +11,9 @@ class UncertifiedContents extends ConsumerWidget {
     required this.notifier,
   });
 
+  // 未ログイン状態情報
   final UncertifiedState state;
+  // 未ログイン状態 ユーザーイベント
   final UncertifiedCase notifier;
 
   @override

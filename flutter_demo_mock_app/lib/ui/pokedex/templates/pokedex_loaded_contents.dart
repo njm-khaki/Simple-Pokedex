@@ -1,35 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo_mock_app/models/pokedex/pokedex_page_state.dart';
-import 'package:flutter_demo_mock_app/states/pokedex/usecase/loaded_case.dart';
+import 'package:flutter_demo_mock_app/response_data/pokemon_detail/pokemon_detail.dart';
+import 'package:flutter_demo_mock_app/states/pokedex/usecase/pokedex_loaded_case.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class LoadedContents extends ConsumerWidget {
-  const LoadedContents({
+/// ポケモン図鑑 読み込み済状態 UI
+class PokedexLoadedContents extends ConsumerWidget {
+  const PokedexLoadedContents({
     super.key,
     required this.state,
     required this.notifier,
   });
 
+  // 読み込み済状態情報
   final PokedexLoaded state;
-  final LoadedCase notifier;
+  // 読み込み済状態 ユーザーイベント
+  final PokedexLoadedCase notifier;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return ListView(
       children: state.pokemons
-          .asMap()
-          .entries
           .map(
-            (entry) => Column(
+            (PokemonDetail poke) => Column(
               children: [
                 ListTile(
                   leading: Image.network(
-                    entry.value.url,
+                    poke.sprites.frontDefault ?? "",
                   ),
                   title: Text(
-                    entry.value.name,
+                    poke.name,
                   ),
-                  onTap: () {},
+                  onTap: () => notifier.onTapPokemon(
+                    context,
+                    poke,
+                  ),
                 ),
                 const Divider(),
               ],
