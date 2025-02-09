@@ -20,7 +20,8 @@ PokemonDetail _$PokemonDetailFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PokemonDetail {
-  String get name => throw _privateConstructorUsedError;
+// ポケモン名
+  String get name => throw _privateConstructorUsedError; // 画像一覧
   PokemonSprite get sprites => throw _privateConstructorUsedError;
 
   /// Serializes this PokemonDetail to a JSON map.
@@ -136,8 +137,10 @@ class _$PokemonDetailImpl implements _PokemonDetail {
   factory _$PokemonDetailImpl.fromJson(Map<String, dynamic> json) =>
       _$$PokemonDetailImplFromJson(json);
 
+// ポケモン名
   @override
   final String name;
+// 画像一覧
   @override
   final PokemonSprite sprites;
 
@@ -183,8 +186,9 @@ abstract class _PokemonDetail implements PokemonDetail {
   factory _PokemonDetail.fromJson(Map<String, dynamic> json) =
       _$PokemonDetailImpl.fromJson;
 
+// ポケモン名
   @override
-  String get name;
+  String get name; // 画像一覧
   @override
   PokemonSprite get sprites;
 

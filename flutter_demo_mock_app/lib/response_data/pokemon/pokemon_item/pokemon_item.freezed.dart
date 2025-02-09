@@ -20,8 +20,9 @@ PokemonItem _$PokemonItemFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PokemonItem {
-  String get name => throw _privateConstructorUsedError;
-  String get url => throw _privateConstructorUsedError;
+// ポケモン名
+  String get name => throw _privateConstructorUsedError; // ポケモン情報取得URL
+  String get url => throw _privateConstructorUsedError; // ポケモン画像 URL
   String get image => throw _privateConstructorUsedError;
 
   /// Serializes this PokemonItem to a JSON map.
@@ -132,12 +133,15 @@ class _$PokemonItemImpl implements _PokemonItem {
   factory _$PokemonItemImpl.fromJson(Map<String, dynamic> json) =>
       _$$PokemonItemImplFromJson(json);
 
+// ポケモン名
   @override
   @JsonKey()
   final String name;
+// ポケモン情報取得URL
   @override
   @JsonKey()
   final String url;
+// ポケモン画像 URL
   @override
   @JsonKey()
   final String image;
@@ -186,10 +190,11 @@ abstract class _PokemonItem implements PokemonItem {
   factory _PokemonItem.fromJson(Map<String, dynamic> json) =
       _$PokemonItemImpl.fromJson;
 
+// ポケモン名
   @override
-  String get name;
+  String get name; // ポケモン情報取得URL
   @override
-  String get url;
+  String get url; // ポケモン画像 URL
   @override
   String get image;
 

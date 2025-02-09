@@ -83,6 +83,7 @@ abstract class _PokedexLoading implements PokedexLoading {
 
 /// @nodoc
 mixin _$PokedexLoaded {
+// ポケモン詳細情報リスト
   List<PokemonDetail> get pokemons => throw _privateConstructorUsedError;
 
   /// Create a copy of PokedexLoaded
@@ -168,7 +169,9 @@ class _$PokedexLoadedImpl implements _PokedexLoaded {
   const _$PokedexLoadedImpl({final List<PokemonDetail> pokemons = const []})
       : _pokemons = pokemons;
 
+// ポケモン詳細情報リスト
   final List<PokemonDetail> _pokemons;
+// ポケモン詳細情報リスト
   @override
   @JsonKey()
   List<PokemonDetail> get pokemons {
@@ -207,6 +210,7 @@ abstract class _PokedexLoaded implements PokedexLoaded {
   const factory _PokedexLoaded({final List<PokemonDetail> pokemons}) =
       _$PokedexLoadedImpl;
 
+// ポケモン詳細情報リスト
   @override
   List<PokemonDetail> get pokemons;
 

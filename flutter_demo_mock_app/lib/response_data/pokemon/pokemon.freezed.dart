@@ -20,9 +20,10 @@ Pokemon _$PokemonFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Pokemon {
-  int get count => throw _privateConstructorUsedError;
-  String get next => throw _privateConstructorUsedError;
-  String get previous => throw _privateConstructorUsedError;
+// 全ポケモン数
+  int get count => throw _privateConstructorUsedError; // 次のポケモン情報取得URL
+  String get next => throw _privateConstructorUsedError; // 前のポケモン情報取得URL
+  String get previous => throw _privateConstructorUsedError; // 取得したポケモン情報リスト
   List<PokemonItem> get results => throw _privateConstructorUsedError;
 
   /// Serializes this Pokemon to a JSON map.
@@ -147,15 +148,20 @@ class _$PokemonImpl implements _Pokemon {
   factory _$PokemonImpl.fromJson(Map<String, dynamic> json) =>
       _$$PokemonImplFromJson(json);
 
+// 全ポケモン数
   @override
   final int count;
+// 次のポケモン情報取得URL
   @override
   @JsonKey()
   final String next;
+// 前のポケモン情報取得URL
   @override
   @JsonKey()
   final String previous;
+// 取得したポケモン情報リスト
   final List<PokemonItem> _results;
+// 取得したポケモン情報リスト
   @override
   @JsonKey()
   List<PokemonItem> get results {
@@ -211,12 +217,13 @@ abstract class _Pokemon implements Pokemon {
 
   factory _Pokemon.fromJson(Map<String, dynamic> json) = _$PokemonImpl.fromJson;
 
+// 全ポケモン数
   @override
-  int get count;
+  int get count; // 次のポケモン情報取得URL
   @override
-  String get next;
+  String get next; // 前のポケモン情報取得URL
   @override
-  String get previous;
+  String get previous; // 取得したポケモン情報リスト
   @override
   List<PokemonItem> get results;
 
