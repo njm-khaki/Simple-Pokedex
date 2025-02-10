@@ -19,7 +19,7 @@ class PokedexLoadingError extends PokedexPageState with _$PokedexLoadingError {
 }
 
 /// ポケモン一覧取得済状態
-class PokedexObtained extends PokedexPageState {
+sealed class PokedexObtained extends PokedexPageState {
   PokedexObtained({required this.pokemons});
 
   final List<PokemonDetail> pokemons;

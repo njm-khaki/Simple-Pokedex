@@ -53,7 +53,6 @@ class PokedexLoadedContents extends ConsumerWidget {
               child: Text('Retry'),
             ),
           PokedexLoaded() => nil,
-          PokedexObtained(pokemons: _) => nil,
         }
       ],
     );
