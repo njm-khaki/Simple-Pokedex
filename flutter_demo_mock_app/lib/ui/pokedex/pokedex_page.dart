@@ -39,8 +39,9 @@ class _PokedexState extends ConsumerState<PokedexPage> {
             state: state,
             notifier: notifier,
           ),
+        PokedexLoadingError() => Text('loading error'),
         // 読み込み済状態
-        PokedexLoaded() => PokedexLoadedContents(
+        PokedexObtained() => PokedexLoadedContents(
             state: state,
             notifier: notifier,
           ),

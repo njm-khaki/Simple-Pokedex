@@ -6,14 +6,22 @@ import 'package:flutter_demo_mock_app/models/pokedex/pokedex_page_state.dart';
 import 'package:flutter_demo_mock_app/response_data/pokemon/pokemon.dart';
 import 'package:flutter_demo_mock_app/response_data/pokemon/pokemon_item/pokemon_item.dart';
 import 'package:flutter_demo_mock_app/response_data/pokemon_detail/pokemon_detail.dart';
+import 'package:flutter_demo_mock_app/states/pokedex/usecase/pokedex_additional_error_case.dart';
+import 'package:flutter_demo_mock_app/states/pokedex/usecase/pokedex_additional_loading_case.dart';
 import 'package:flutter_demo_mock_app/states/pokedex/usecase/pokedex_loaded_case.dart';
 import 'package:flutter_demo_mock_app/states/pokedex/usecase/pokedex_loading_case.dart';
+import 'package:flutter_demo_mock_app/states/pokedex/usecase/pokedex_loading_error_case.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 /// ポケモン図鑑画面 状態
 class PokedexState extends Notifier<PokedexPageState>
-    with PokedexLoadingCase, PokedexLoadedCase {
+    implements
+        PokedexAdditionalErrorCase,
+        PokedexAdditionalLoadingCase,
+        PokedexLoadingCase,
+        PokedexLoadingErrorCase,
+        PokedexLoadedCase {
   // HTTPクライアント
   // TODO: HTTP通信周りの設計は要検討
   final _dio = Dio();
@@ -89,6 +97,10 @@ class PokedexState extends Notifier<PokedexPageState>
       extra: pokemon,
     );
   }
+
+  /// 再読み込みボタン押下時の処理
+  @override
+  Future<void> onClickReloadButton() async {}
 }
 
 /// ポケモン図鑑画面の状態をviewへ提供
