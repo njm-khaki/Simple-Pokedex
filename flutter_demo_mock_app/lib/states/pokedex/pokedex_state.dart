@@ -101,6 +101,9 @@ class PokedexState extends Notifier<PokedexPageState>
   /// 再読み込みボタン押下時の処理
   @override
   Future<void> onClickReloadButton() async {}
+
+  @override
+  Future<void> onTapAddtionalRetryButton() async {}
 }
 
 /// ポケモン図鑑画面の状態をviewへ提供
