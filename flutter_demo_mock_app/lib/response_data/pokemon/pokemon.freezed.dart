@@ -22,8 +22,8 @@ Pokemon _$PokemonFromJson(Map<String, dynamic> json) {
 mixin _$Pokemon {
 // 全ポケモン数
   int get count => throw _privateConstructorUsedError; // 次のポケモン情報取得URL
-  String get next => throw _privateConstructorUsedError; // 前のポケモン情報取得URL
-  String get previous => throw _privateConstructorUsedError; // 取得したポケモン情報リスト
+  String? get next => throw _privateConstructorUsedError; // 前のポケモン情報取得URL
+  String? get previous => throw _privateConstructorUsedError; // 取得したポケモン情報リスト
   List<PokemonItem> get results => throw _privateConstructorUsedError;
 
   /// Serializes this Pokemon to a JSON map.
@@ -41,7 +41,7 @@ abstract class $PokemonCopyWith<$Res> {
       _$PokemonCopyWithImpl<$Res, Pokemon>;
   @useResult
   $Res call(
-      {int count, String next, String previous, List<PokemonItem> results});
+      {int count, String? next, String? previous, List<PokemonItem> results});
 }
 
 /// @nodoc
@@ -60,8 +60,8 @@ class _$PokemonCopyWithImpl<$Res, $Val extends Pokemon>
   @override
   $Res call({
     Object? count = null,
-    Object? next = null,
-    Object? previous = null,
+    Object? next = freezed,
+    Object? previous = freezed,
     Object? results = null,
   }) {
     return _then(_value.copyWith(
@@ -69,14 +69,14 @@ class _$PokemonCopyWithImpl<$Res, $Val extends Pokemon>
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
               as int,
-      next: null == next
+      next: freezed == next
           ? _value.next
           : next // ignore: cast_nullable_to_non_nullable
-              as String,
-      previous: null == previous
+              as String?,
+      previous: freezed == previous
           ? _value.previous
           : previous // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       results: null == results
           ? _value.results
           : results // ignore: cast_nullable_to_non_nullable
@@ -93,7 +93,7 @@ abstract class _$$PokemonImplCopyWith<$Res> implements $PokemonCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int count, String next, String previous, List<PokemonItem> results});
+      {int count, String? next, String? previous, List<PokemonItem> results});
 }
 
 /// @nodoc
@@ -110,8 +110,8 @@ class __$$PokemonImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? count = null,
-    Object? next = null,
-    Object? previous = null,
+    Object? next = freezed,
+    Object? previous = freezed,
     Object? results = null,
   }) {
     return _then(_$PokemonImpl(
@@ -119,14 +119,14 @@ class __$$PokemonImplCopyWithImpl<$Res>
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
               as int,
-      next: null == next
+      next: freezed == next
           ? _value.next
           : next // ignore: cast_nullable_to_non_nullable
-              as String,
-      previous: null == previous
+              as String?,
+      previous: freezed == previous
           ? _value.previous
           : previous // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       results: null == results
           ? _value._results
           : results // ignore: cast_nullable_to_non_nullable
@@ -140,8 +140,8 @@ class __$$PokemonImplCopyWithImpl<$Res>
 class _$PokemonImpl implements _Pokemon {
   const _$PokemonImpl(
       {required this.count,
-      this.next = "",
-      this.previous = "",
+      this.next = null,
+      this.previous = null,
       final List<PokemonItem> results = const []})
       : _results = results;
 
@@ -154,11 +154,11 @@ class _$PokemonImpl implements _Pokemon {
 // 次のポケモン情報取得URL
   @override
   @JsonKey()
-  final String next;
+  final String? next;
 // 前のポケモン情報取得URL
   @override
   @JsonKey()
-  final String previous;
+  final String? previous;
 // 取得したポケモン情報リスト
   final List<PokemonItem> _results;
 // 取得したポケモン情報リスト
@@ -211,8 +211,8 @@ class _$PokemonImpl implements _Pokemon {
 abstract class _Pokemon implements Pokemon {
   const factory _Pokemon(
       {required final int count,
-      final String next,
-      final String previous,
+      final String? next,
+      final String? previous,
       final List<PokemonItem> results}) = _$PokemonImpl;
 
   factory _Pokemon.fromJson(Map<String, dynamic> json) = _$PokemonImpl.fromJson;
@@ -221,9 +221,9 @@ abstract class _Pokemon implements Pokemon {
   @override
   int get count; // 次のポケモン情報取得URL
   @override
-  String get next; // 前のポケモン情報取得URL
+  String? get next; // 前のポケモン情報取得URL
   @override
-  String get previous; // 取得したポケモン情報リスト
+  String? get previous; // 取得したポケモン情報リスト
   @override
   List<PokemonItem> get results;
 

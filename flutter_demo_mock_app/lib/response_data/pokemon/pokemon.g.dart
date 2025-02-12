@@ -9,8 +9,8 @@ part of 'pokemon.dart';
 _$PokemonImpl _$$PokemonImplFromJson(Map<String, dynamic> json) =>
     _$PokemonImpl(
       count: (json['count'] as num).toInt(),
-      next: json['next'] as String? ?? "",
-      previous: json['previous'] as String? ?? "",
+      next: json['next'] as String? ?? null,
+      previous: json['previous'] as String? ?? null,
       results: (json['results'] as List<dynamic>?)
               ?.map((e) => PokemonItem.fromJson(e as Map<String, dynamic>))
               .toList() ??

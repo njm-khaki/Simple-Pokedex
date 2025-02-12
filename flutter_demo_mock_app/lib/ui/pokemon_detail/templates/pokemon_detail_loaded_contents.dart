@@ -28,20 +28,25 @@ class PokemonDetailLoadedContents extends ConsumerWidget {
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            // ポケモンの画像をスライドで表示する
-            CarouselSlider.builder(
-              options: CarouselOptions(
-                height: MediaQuery.of(context).size.height / 4,
-                enableInfiniteScroll: false,
-              ),
-              itemCount: pokemon.sprites.toList.length,
-              itemBuilder: (context, index, realIndex) {
-                return Image.network(
-                  pokemon.sprites.toList[index],
-                  fit: BoxFit.contain,
-                );
-              },
-            ),
+            pokemon.sprites.toList.isNotEmpty
+                ?
+                // ポケモンの画像をスライドで表示する
+                CarouselSlider.builder(
+                    options: CarouselOptions(
+                      height: MediaQuery.of(context).size.height / 4,
+                      enableInfiniteScroll: false,
+                    ),
+                    itemCount: pokemon.sprites.toList.length,
+                    itemBuilder: (context, index, realIndex) {
+                      return Image.network(
+                        pokemon.sprites.toList[index],
+                        fit: BoxFit.contain,
+                      );
+                    },
+                  )
+                : Image.network(
+                    "https://pokeboon.com/jp/wp-content/uploads/2019/05/no-image_pokemon.png",
+                  ),
             Text(pokemon.name),
           ],
         ),

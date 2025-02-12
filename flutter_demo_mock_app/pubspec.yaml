@@ -39,6 +39,7 @@ dependencies:
   go_router: ^14.7.2
   dio: ^5.8.0+1
   carousel_slider: ^5.0.0
+  nil: ^1.1.1
 
 dev_dependencies:
   flutter_test:

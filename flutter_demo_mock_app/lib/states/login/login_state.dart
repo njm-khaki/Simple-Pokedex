@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 /// ログイン画面 状態管理
-class LoginState extends Notifier<LoginPageState> with UncertifiedCase {
+class LoginState extends Notifier<LoginPageState> implements UncertifiedCase {
   @override
   LoginPageState build() {
     // 画面表示時は未ログイン状態

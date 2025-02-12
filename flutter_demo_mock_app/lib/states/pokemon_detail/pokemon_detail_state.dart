@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// ポケモン詳細画面 状態
 class PokemonDetailState extends Notifier<PokemonDetailPageState>
-    with PokemonDetailLoadedCase {
+    implements PokemonDetailLoadedCase {
   @override
   PokemonDetailPageState build() {
     // 画面表示時は既に読み込み済状態とする
