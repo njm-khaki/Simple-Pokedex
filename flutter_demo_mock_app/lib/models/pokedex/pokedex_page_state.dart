@@ -20,9 +20,15 @@ class PokedexLoadingError extends PokedexPageState with _$PokedexLoadingError {
 
 /// ポケモン一覧取得済状態
 sealed class PokedexObtained extends PokedexPageState {
-  PokedexObtained({required this.pokemons});
+  PokedexObtained({
+    required this.pokemons,
+    this.previous,
+    this.next,
+  });
 
   final List<PokemonDetail> pokemons;
+  final String? previous;
+  final String? next;
 }
 
 /// ポケモン図鑑 読み込み済み状態
@@ -31,6 +37,8 @@ class PokedexLoaded extends PokedexObtained with _$PokedexLoaded {
   const factory PokedexLoaded({
     // ポケモン詳細情報リスト
     @Default([]) List<PokemonDetail> pokemons,
+    @Default(null) String? previous,
+    @Default(null) String? next,
   }) = _PokedexLoaded;
 }
 
@@ -41,6 +49,8 @@ class PokedexAdditionalLoading extends PokedexObtained
   const factory PokedexAdditionalLoading({
     // ポケモン詳細情報リスト
     @Default([]) List<PokemonDetail> pokemons,
+    @Default(null) String? previous,
+    @Default(null) String? next,
   }) = _PokedexAdditionalLoading;
 }
 
@@ -51,5 +61,7 @@ class PokedexAdditionalError extends PokedexObtained
   const factory PokedexAdditionalError({
     // ポケモン詳細情報リスト
     @Default([]) List<PokemonDetail> pokemons,
+    @Default(null) String? previous,
+    @Default(null) String? next,
   }) = _PokedexAdditionalError;
 }

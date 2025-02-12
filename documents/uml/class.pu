@@ -2,12 +2,18 @@
 
 class App {}
 
-package routes {
+folder "routes" as Routes {
     class GoRouter {}
 }
 
 package ui {
-    class XXXPage {}
+    class XXXPage {
+        - state: XXXPageState
+        - notifier: XXXState
+    }
+    note left 
+        画面本体
+    end note
 
     folder "templates" as Templates {
         class InitializationContens {
@@ -43,7 +49,7 @@ package flutter_rivrepod {
     abstract class Notifier<XXXPageState> {}
 }
 
-package models {
+folder "models" as Models {
     class XXXPageState {}
     note left
     画面の状態を示すsealedクラス
@@ -54,7 +60,9 @@ package models {
 
     ' class InitializationError {}
 
-    class Loaded {}
+    class Loaded {
+        dataList List<XXXItem>
+    }
 
     class ReLoading {}
 
@@ -62,13 +70,15 @@ package models {
 }
 
 folder "usecase" as Usecase {
-    abstract class InitializationCase {}
+    interface InitializationCase {}
 
     ' abstract class InitializationErrorCase {}
 
-    abstract class LoadedCase {}
+    interface LoadedCase {
+        onClickReloadButton(): Future<void>
+    }
 
-    abstract class ReLoadingCase {}
+    interface ReLoadingCase {}
 
     ' abstract class ReLoadErrorCase {}
 }
@@ -79,8 +89,7 @@ folder "freezed_annotation" as FreezedAnnotation {
 
 App --> GoRouter
 GoRouter --> XXXPage
-' XXXPage --> XXXState
-states --> ui
+states --> XXXPage
 
 XXXPageState <|-- Initialization
 ' XXXPageState <|-- InitializationError
@@ -89,12 +98,13 @@ XXXPageState <|-- ReLoading
 ' XXXPageState <|-- ReLoadError
 
 ' XXXState <|-- Notifier
-XXXPageState -- XXXState : includes >
+Models -- states : includes >
 
-XXXState <|.. InitializationCase
+states <|.. Usecase
+' XXXState <|.. InitializationCase
 ' XXXState <|.. InitializationErrorCase
-XXXState <|.. LoadedCase
-XXXState <|.. ReLoadingCase
+' XXXState <|.. LoadedCase
+' XXXState <|.. ReLoadingCase
 ' XXXState <|.. ReLoadErrorCase
 
 XXXPage -- InitializationContens : includes <
@@ -118,8 +128,8 @@ XXXPage -- ReLoadingContents : includes <
 ' ReLoadErrorContents -- ReLoadError : includes >
 ' ReLoadErrorContents -- ReLoadErrorCase : includes >
 
-models <.. FreezedAnnotation
-states <.. flutter_rivrepod
+Models <.. FreezedAnnotation
+states <... flutter_rivrepod
 
 note "immutableなモデルクラスを自動生成する" as FreezedAnnotationComments
 FreezedAnnotation .. FreezedAnnotationComments
@@ -129,4 +139,11 @@ Templates .. TemplatesComments
 
 note "各状態でのユーザーイベントを定義する\n適用先にオーバーライドで実装を強制させる" as UsecaseComments
 Usecase .. UsecaseComments
+
+note "ルーティング設定を行う" as RoutesComments
+Routes .. RoutesComments
+
+note "アプリ本体" as AppComments
+App .. AppComments
+
 @enduml

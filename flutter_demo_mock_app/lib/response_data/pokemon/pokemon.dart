@@ -11,9 +11,9 @@ class Pokemon with _$Pokemon {
     // 全ポケモン数
     required int count,
     // 次のポケモン情報取得URL
-    @Default("") String next,
+    @Default(null) String? next,
     // 前のポケモン情報取得URL
-    @Default("") String previous,
+    @Default(null) String? previous,
     // 取得したポケモン情報リスト
     @Default([]) List<PokemonItem> results,
   }) = _Pokemon;

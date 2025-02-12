@@ -3,6 +3,7 @@ import 'package:flutter_demo_mock_app/models/pokedex/pokedex_page_state.dart';
 import 'package:flutter_demo_mock_app/states/pokedex/pokedex_state.dart';
 import 'package:flutter_demo_mock_app/ui/pokedex/templates/pokedex_loaded_contents.dart';
 import 'package:flutter_demo_mock_app/ui/pokedex/templates/pokedex_loading_contents.dart';
+import 'package:flutter_demo_mock_app/ui/pokedex/templates/pokedex_loading_error_contens.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// ポケモン図鑑画面
@@ -39,8 +40,12 @@ class _PokedexState extends ConsumerState<PokedexPage> {
             state: state,
             notifier: notifier,
           ),
-        PokedexLoadingError() => Text('loading error'),
-        // 読み込み済状態
+        // 読み込みエラー状態
+        PokedexLoadingError() => PokedexLoadingErrorContents(
+            state: state,
+            notifier: notifier,
+          ),
+        // ポケモン一覧取得済済状態
         PokedexObtained() => PokedexLoadedContents(
             state: state,
             notifier: notifier,

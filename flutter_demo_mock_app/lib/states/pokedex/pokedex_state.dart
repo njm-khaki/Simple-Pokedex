@@ -1,11 +1,10 @@
-import 'dart:convert';
-
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_demo_mock_app/api/pokeapi/api/v2/pokemon/pokemon_api.dart';
 import 'package:flutter_demo_mock_app/models/pokedex/pokedex_page_state.dart';
 import 'package:flutter_demo_mock_app/response_data/pokemon/pokemon.dart';
 import 'package:flutter_demo_mock_app/response_data/pokemon/pokemon_item/pokemon_item.dart';
 import 'package:flutter_demo_mock_app/response_data/pokemon_detail/pokemon_detail.dart';
+import 'package:flutter_demo_mock_app/response_data/result.dart';
 import 'package:flutter_demo_mock_app/states/pokedex/usecase/pokedex_additional_error_case.dart';
 import 'package:flutter_demo_mock_app/states/pokedex/usecase/pokedex_additional_loading_case.dart';
 import 'package:flutter_demo_mock_app/states/pokedex/usecase/pokedex_loaded_case.dart';
@@ -24,7 +23,7 @@ class PokedexState extends Notifier<PokedexPageState>
         PokedexLoadedCase {
   // HTTPクライアント
   // TODO: HTTP通信周りの設計は要検討
-  final _dio = Dio();
+  final _pokeApi = PokemonApi();
 
   @override
   PokedexPageState build() {
@@ -35,54 +34,39 @@ class PokedexState extends Notifier<PokedexPageState>
   // 画面表示時の処理
   Future<void> onInitState() async {
     // ポケモン一覧情報を取得
-    final response = await _dio.get(
-      'https://pokeapi.co/api/v2/pokemon?limit=100',
-      options: Options(
-        responseType: ResponseType.plain,
-      ),
-    );
+    final response = await _pokeApi.getPokemonOrderLimit();
 
-    // 取得結果をパース
-    final data = Pokemon.fromJson(
-      json.decode(
-        response.data.toString(),
-      ),
-    );
+    if (response is Failure<Pokemon, Exception>) {
+      state = PokedexLoadingError();
+      return;
+    }
+
+    Pokemon poke = Pokemon(count: 0);
+    final List<PokemonDetail> pokeList = [];
+    if (response is Success<Pokemon, Exception>) {
+      poke = response.value;
+    }
 
     // 各ポケモンの詳細情報を受け取る
-    for (PokemonItem item in data.results) {
+    for (PokemonItem item in poke.results) {
       // ポケモンの詳細情報を取得
-      final res = await _dio.get(
-        item.url,
-        options: Options(
-          responseType: ResponseType.plain,
-        ),
-      );
+      final response = await _pokeApi.getPokemonDetailByIndex(item.url);
 
-      // 取得結果をパース
-      final poke = PokemonDetail.fromJson(
-        jsonDecode(
-          res.data.toString(),
-        ),
-      );
-
-      // ポケモンの詳細情報読み込み済のときは
-      // 取得したポケモンを一覧に追加
-      if (state is PokedexLoaded) {
-        final loadedState = (state as PokedexLoaded);
-        state = loadedState.copyWith(
-          pokemons: [...loadedState.pokemons, poke],
-        );
+      if (response is Failure<PokemonDetail, Exception>) {
+        state = PokedexLoadingError();
+        return;
       }
 
-      // ローディング状態のときは
-      // 取得したポケモンを追加して読み込み済状態へ移行
-      if (state is PokedexLoading) {
-        state = PokedexLoaded(
-          pokemons: [poke],
-        );
+      if (response is Success<PokemonDetail, Exception>) {
+        pokeList.add(response.value);
       }
     }
+
+    state = PokedexLoaded(
+      pokemons: pokeList,
+      previous: poke.previous,
+      next: poke.next,
+    );
   }
 
   /// ポケモンをタップしたときの処理
@@ -100,7 +84,13 @@ class PokedexState extends Notifier<PokedexPageState>
 
   /// 再読み込みボタン押下時の処理
   @override
-  Future<void> onClickReloadButton() async {}
+  Future<void> onClickReloadButton() async {
+    // ローディング状態へ移行
+    state = PokedexLoading();
+    // 画面表示時と同様の動作
+    // TODO: 冗長なので要検討
+    onInitState();
+  }
 
   @override
   Future<void> onTapAddtionalRetryButton() async {}
