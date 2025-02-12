@@ -11,7 +11,9 @@ final class PokemonSequence {
   Future<Result<PokemonSequenceResult, Exception>> getPokemonList({
     String? url,
   }) async {
-    final response = await _pokeApi.getPokemonOrderLimit();
+    final response = await _pokeApi.getPokemonOrderLimit(
+      url: url,
+    );
 
     if (response is Failure<Pokemon, Exception>) {
       return Failure(response.exception);

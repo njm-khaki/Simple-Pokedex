@@ -79,7 +79,76 @@ class PokedexState extends Notifier<PokedexPageState>
   }
 
   @override
-  Future<void> onTapAddtionalRetryButton() async {}
+  Future<void> onTapAddtionalRetryButton() async {
+    if (state is! PokedexAdditionalError) {
+      return;
+    }
+
+    final errorState = (state as PokedexAdditionalError);
+    state = PokedexAdditionalLoading(
+      pokemons: errorState.pokemons,
+      next: errorState.next,
+      previous: errorState.previous,
+    );
+
+    final response = await _pokeSequence.getPokemonList(url: errorState.next);
+
+    state = switch (response) {
+      Success<PokemonSequenceResult, Exception> poke => PokedexLoaded(
+          pokemons: [
+            ...errorState.pokemons,
+            ...poke.value.pokemons,
+          ],
+          next: poke.value.next,
+          previous: errorState.previous,
+        ),
+      Failure _ => errorState,
+    };
+  }
+
+  @override
+  Future<void> onPokemonListScrollEnd(
+    ScrollEndNotification notification,
+  ) async {
+    if (state is! PokedexLoaded) {
+      return;
+    }
+
+    final PokedexLoaded loadData = (state as PokedexLoaded);
+
+    if (loadData.next == null) {
+      return;
+    }
+
+    if (notification.metrics.pixels == notification.metrics.maxScrollExtent) {
+      return;
+    }
+
+    state = PokedexAdditionalLoading(
+      pokemons: loadData.pokemons,
+      next: loadData.next,
+      previous: loadData.previous,
+    );
+
+    final response = await _pokeSequence.getPokemonList(
+      url: loadData.next,
+    );
+
+    state = switch (response) {
+      Success<PokemonSequenceResult, Exception> poke => loadData.copyWith(
+          pokemons: [
+            ...loadData.pokemons,
+            ...poke.value.pokemons,
+          ],
+          next: response.value.next,
+        ),
+      Failure _ => PokedexAdditionalError(
+          pokemons: loadData.pokemons,
+          next: loadData.next,
+          previous: loadData.previous,
+        )
+    };
+  }
 }
 
 /// ポケモン図鑑画面の状態をviewへ提供

@@ -18,10 +18,10 @@ class PokemonApi with DioMixin implements Dio {
   );
 
   Future<Result<Pokemon, Exception>> getPokemonOrderLimit({
-    String url = _defaultUrl,
+    String? url,
   }) async {
     try {
-      final response = await _dio.get(url);
+      final response = await _dio.get(url ?? _defaultUrl);
       if (response.statusCode != HttpStatus.ok) {
         return Failure(
           Exception(response.statusMessage),

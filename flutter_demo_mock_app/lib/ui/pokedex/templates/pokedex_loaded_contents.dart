@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demo_mock_app/models/pokedex/pokedex_page_state.dart';
 import 'package:flutter_demo_mock_app/response_data/pokemon_detail/pokemon_detail.dart';
 import 'package:flutter_demo_mock_app/states/pokedex/usecase/pokedex_additional_error_case.dart';
+import 'package:flutter_demo_mock_app/states/pokedex/usecase/pokedex_loaded_case.dart';
 import 'package:flutter_demo_mock_app/states/pokedex/usecase/pokedex_obtained_case.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nil/nil.dart';
@@ -21,40 +22,51 @@ class PokedexLoadedContents extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return ListView(
-      children: [
-        ...state.pokemons.map(
-          (PokemonDetail poke) => Column(
-            children: [
-              ListTile(
-                leading: Image.network(
-                  poke.sprites.frontDefault ?? "",
+    return NotificationListener<ScrollEndNotification>(
+      child: ListView(
+        children: [
+          ...state.pokemons.map(
+            (PokemonDetail poke) => Column(
+              children: [
+                ListTile(
+                  leading: Image.network(
+                    poke.sprites.frontDefault ??
+                        "https://pokeboon.com/jp/wp-content/uploads/2019/05/no-image_pokemon.png",
+                  ),
+                  title: Text(
+                    poke.name,
+                  ),
+                  onTap: () => notifier.onTapPokemon(
+                    context,
+                    poke,
+                  ),
                 ),
-                title: Text(
-                  poke.name,
-                ),
-                onTap: () => notifier.onTapPokemon(
-                  context,
-                  poke,
-                ),
-              ),
-              const Divider(),
-            ],
-          ),
-        ),
-        // 追加読み込み状況
-        switch (state) {
-          PokedexAdditionalLoading() => Text('loading ...'),
-          PokedexAdditionalError() => ElevatedButton(
-              onPressed: () {
-                (notifier as PokedexAdditionalErrorCase)
-                    .onTapAddtionalRetryButton();
-              },
-              child: Text('Retry'),
+                const Divider(),
+              ],
             ),
-          PokedexLoaded() => nil,
+          ),
+          // 追加読み込み状況
+          switch (state) {
+            PokedexAdditionalLoading() => Text('loading ...'),
+            PokedexAdditionalError() => ElevatedButton(
+                onPressed: () {
+                  (notifier as PokedexAdditionalErrorCase)
+                      .onTapAddtionalRetryButton();
+                },
+                child: Text('Retry'),
+              ),
+            PokedexLoaded() => nil,
+          }
+        ],
+      ),
+      onNotification: (notification) {
+        if (state is PokedexLoaded) {
+          (notifier as PokedexLoadedCase).onPokemonListScrollEnd(
+            notification,
+          );
         }
-      ],
+        return false;
+      },
     );
   }
 }
