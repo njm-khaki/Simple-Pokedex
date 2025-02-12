@@ -21,8 +21,8 @@ Demo app using Dio mocking in Flutter
 ||バージョン|
 |--|--|
 |OS|windows11|
-|Flutter|3.27.3|
-|Dart|3.6.1|
+|Flutter|3.29.0|
+|Dart|3.7.0|
 |Android Studio|ersion 2024.2|
 
 ## 環境構築・実行方法
