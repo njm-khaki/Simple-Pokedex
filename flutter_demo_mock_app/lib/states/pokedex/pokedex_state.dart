@@ -37,7 +37,6 @@ class PokedexState extends Notifier<PokedexPageState>
       Success<PokemonSequenceResult, Exception> poke => PokedexLoaded(
           pokemons: poke.value.pokemons,
           next: poke.value.next,
-          previous: poke.value.previous,
         ),
       Failure _ => PokedexLoadingError(),
     };
@@ -72,7 +71,6 @@ class PokedexState extends Notifier<PokedexPageState>
       Success<PokemonSequenceResult, Exception> poke => PokedexLoaded(
           pokemons: poke.value.pokemons,
           next: poke.value.next,
-          previous: poke.value.previous,
         ),
       Failure _ => PokedexLoadingError(),
     };
@@ -88,7 +86,6 @@ class PokedexState extends Notifier<PokedexPageState>
     state = PokedexAdditionalLoading(
       pokemons: errorState.pokemons,
       next: errorState.next,
-      previous: errorState.previous,
     );
 
     final response = await _pokeSequence.getPokemonList(url: errorState.next);
@@ -100,7 +97,6 @@ class PokedexState extends Notifier<PokedexPageState>
             ...poke.value.pokemons,
           ],
           next: poke.value.next,
-          previous: errorState.previous,
         ),
       Failure _ => errorState,
     };
@@ -127,7 +123,6 @@ class PokedexState extends Notifier<PokedexPageState>
     state = PokedexAdditionalLoading(
       pokemons: loadData.pokemons,
       next: loadData.next,
-      previous: loadData.previous,
     );
 
     final response = await _pokeSequence.getPokemonList(
@@ -145,7 +140,6 @@ class PokedexState extends Notifier<PokedexPageState>
       Failure _ => PokedexAdditionalError(
           pokemons: loadData.pokemons,
           next: loadData.next,
-          previous: loadData.previous,
         )
     };
   }

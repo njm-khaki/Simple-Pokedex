@@ -47,7 +47,10 @@ class PokedexLoadedContents extends ConsumerWidget {
           ),
           // 追加読み込み状況
           switch (state) {
-            PokedexAdditionalLoading() => Text('loading ...'),
+            PokedexAdditionalLoading() => Container(
+                alignment: Alignment.center,
+                child: CircularProgressIndicator(),
+              ),
             PokedexAdditionalError() => ElevatedButton(
                 onPressed: () {
                   (notifier as PokedexAdditionalErrorCase)
