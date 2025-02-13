@@ -18,6 +18,7 @@ class PokedexLoadingContents extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // 読み込み中ではスピナーを表示
     return Container(
       alignment: Alignment.center,
       child: Column(

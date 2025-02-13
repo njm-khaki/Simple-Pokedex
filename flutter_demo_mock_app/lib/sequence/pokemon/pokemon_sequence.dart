@@ -43,7 +43,6 @@ final class PokemonSequence {
       PokemonSequenceResult(
         pokemons: pokeList,
         next: poke.next,
-        previous: poke.previous,
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo_mock_app/components/button/retry_button.dart';
 import 'package:flutter_demo_mock_app/models/pokedex/pokedex_page_state.dart';
 import 'package:flutter_demo_mock_app/states/pokedex/usecase/pokedex_loading_error_case.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -24,9 +25,8 @@ class PokedexLoadingErrorContents extends ConsumerWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text('Loading Error!!'),
-          ElevatedButton(
+          RetryButton(
             onPressed: notifier.onClickReloadButton,
-            child: Text('Retry'),
           ),
         ],
       ),
