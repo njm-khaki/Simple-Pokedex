@@ -35,6 +35,7 @@ class PokedexLoadedContents extends ConsumerWidget {
                   ),
                   title: Text(
                     poke.name,
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
                   onTap: () => notifier.onTapPokemon(
                     context,

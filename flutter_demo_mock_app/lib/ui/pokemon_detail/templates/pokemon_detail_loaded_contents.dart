@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demo_mock_app/models/pokemon_detail/pokemon_detail_page_state.dart';
 import 'package:flutter_demo_mock_app/response_data/pokemon_detail/pokemon_detail.dart';
 import 'package:flutter_demo_mock_app/states/pokemon_detail/usecase/pokemon_detail_loaded_case.dart';
+import 'package:flutter_demo_mock_app/ui/pokemon_detail/organism/pokedex_item.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// ポケモン詳細 読み込み済状態 UI
@@ -26,7 +27,6 @@ class PokemonDetailLoadedContents extends ConsumerWidget {
     return ListView(
       children: [
         Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             pokemon.sprites.toList.isNotEmpty
                 ?
@@ -47,7 +47,30 @@ class PokemonDetailLoadedContents extends ConsumerWidget {
                 : Image.network(
                     "https://pokeboon.com/jp/wp-content/uploads/2019/05/no-image_pokemon.png",
                   ),
-            Text(pokemon.name),
+            Divider(),
+            PokedexItem(
+              title: 'types',
+              children: pokemon.types
+                  .map(
+                    (type) => Text(type.type.name),
+                  )
+                  .toList(),
+            ),
+            PokedexItem(
+              title: 'physical',
+              children: [
+                Text('height: ${pokemon.height}'),
+                Text('weight: ${pokemon.weight}'),
+              ],
+            ),
+            PokedexItem(
+              title: 'abilities',
+              children: pokemon.abilities
+                  .map(
+                    (ability) => Text(ability.ability.name),
+                  )
+                  .toList(),
+            ),
           ],
         ),
       ],
