@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo_mock_app/components/button/retry_button.dart';
 import 'package:flutter_demo_mock_app/models/pokedex/pokedex_page_state.dart';
 import 'package:flutter_demo_mock_app/response_data/pokemon_detail/pokemon_detail.dart';
 import 'package:flutter_demo_mock_app/states/pokedex/usecase/pokedex_additional_error_case.dart';
@@ -42,10 +43,9 @@ class PokedexObtainedContents extends ConsumerWidget {
                 alignment: Alignment.center,
                 child: CircularProgressIndicator(),
               ),
-            PokedexAdditionalError() => ElevatedButton(
+            PokedexAdditionalError() => RetryButton(
                 onPressed: (notifier as PokedexAdditionalErrorCase)
                     .onTapAddtionalRetryButton,
-                child: Text('Retry'),
               ),
             PokedexLoaded() => nil,
           }

@@ -20,7 +20,8 @@ PokemonAbilityDetail _$PokemonAbilityDetailFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PokemonAbilityDetail {
-  String get name => throw _privateConstructorUsedError;
+// 特性名
+  String get name => throw _privateConstructorUsedError; // 詳細情報URL
   String? get url => throw _privateConstructorUsedError;
 
   /// Serializes this PokemonAbilityDetail to a JSON map.
@@ -122,9 +123,11 @@ class _$PokemonAbilityDetailImpl implements _PokemonAbilityDetail {
   factory _$PokemonAbilityDetailImpl.fromJson(Map<String, dynamic> json) =>
       _$$PokemonAbilityDetailImplFromJson(json);
 
+// 特性名
   @override
   @JsonKey()
   final String name;
+// 詳細情報URL
   @override
   @JsonKey()
   final String? url;
@@ -172,8 +175,9 @@ abstract class _PokemonAbilityDetail implements PokemonAbilityDetail {
   factory _PokemonAbilityDetail.fromJson(Map<String, dynamic> json) =
       _$PokemonAbilityDetailImpl.fromJson;
 
+// 特性名
   @override
-  String get name;
+  String get name; // 詳細情報URL
   @override
   String? get url;
 

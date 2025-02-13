@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demo_mock_app/response_data/pokemon_detail/pokemon_detail.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+/// ポケモン一覧リスト 各ポケモンの表示
 class PokemonListItem extends ConsumerWidget {
   const PokemonListItem({
     super.key,
@@ -9,8 +10,10 @@ class PokemonListItem extends ConsumerWidget {
     required this.onTapPokemon,
   });
 
+  // ポケモンの詳細情報
   final PokemonDetail pokemon;
 
+  // ポケモンをタップしたときの処理
   final void Function(
     BuildContext context,
     PokemonDetail pokemon,

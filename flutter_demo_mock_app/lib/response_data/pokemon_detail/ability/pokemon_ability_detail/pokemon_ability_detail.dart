@@ -3,11 +3,13 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'pokemon_ability_detail.freezed.dart';
 part 'pokemon_ability_detail.g.dart';
 
-// ポケモン タイプ詳細情報
+/// ポケモン 特性情報
 @freezed
 class PokemonAbilityDetail with _$PokemonAbilityDetail {
   const factory PokemonAbilityDetail({
+    // 特性名
     @Default("") String name,
+    // 詳細情報URL
     @Default(null) String? url,
   }) = _PokemonAbilityDetail;
 

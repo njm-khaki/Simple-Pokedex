@@ -20,7 +20,8 @@ PokemonTypeDetail _$PokemonTypeDetailFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PokemonTypeDetail {
-  String get name => throw _privateConstructorUsedError;
+// タイプ名
+  String get name => throw _privateConstructorUsedError; // タイプ情報詳細URL
   String? get url => throw _privateConstructorUsedError;
 
   /// Serializes this PokemonTypeDetail to a JSON map.
@@ -121,9 +122,11 @@ class _$PokemonTypeDetailImpl implements _PokemonTypeDetail {
   factory _$PokemonTypeDetailImpl.fromJson(Map<String, dynamic> json) =>
       _$$PokemonTypeDetailImplFromJson(json);
 
+// タイプ名
   @override
   @JsonKey()
   final String name;
+// タイプ情報詳細URL
   @override
   @JsonKey()
   final String? url;
@@ -170,8 +173,9 @@ abstract class _PokemonTypeDetail implements PokemonTypeDetail {
   factory _PokemonTypeDetail.fromJson(Map<String, dynamic> json) =
       _$PokemonTypeDetailImpl.fromJson;
 
+// タイプ名
   @override
-  String get name;
+  String get name; // タイプ情報詳細URL
   @override
   String? get url;
 

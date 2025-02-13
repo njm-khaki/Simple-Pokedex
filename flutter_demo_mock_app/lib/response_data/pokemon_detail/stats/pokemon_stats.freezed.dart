@@ -20,9 +20,10 @@ PokemonStats _$PokemonStatsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PokemonStats {
+// 種族値
   @JsonKey(name: 'base_stat')
-  int get baseStat => throw _privateConstructorUsedError;
-  int get effort => throw _privateConstructorUsedError;
+  int get baseStat => throw _privateConstructorUsedError; // 努力値
+  int get effort => throw _privateConstructorUsedError; // 種族値詳細情報
   PokemonStatsDetail get stat => throw _privateConstructorUsedError;
 
   /// Serializes this PokemonStats to a JSON map.
@@ -157,11 +158,14 @@ class _$PokemonStatsImpl implements _PokemonStats {
   factory _$PokemonStatsImpl.fromJson(Map<String, dynamic> json) =>
       _$$PokemonStatsImplFromJson(json);
 
+// 種族値
   @override
   @JsonKey(name: 'base_stat')
   final int baseStat;
+// 努力値
   @override
   final int effort;
+// 種族値詳細情報
   @override
   final PokemonStatsDetail stat;
 
@@ -210,11 +214,12 @@ abstract class _PokemonStats implements PokemonStats {
   factory _PokemonStats.fromJson(Map<String, dynamic> json) =
       _$PokemonStatsImpl.fromJson;
 
+// 種族値
   @override
   @JsonKey(name: 'base_stat')
-  int get baseStat;
+  int get baseStat; // 努力値
   @override
-  int get effort;
+  int get effort; // 種族値詳細情報
   @override
   PokemonStatsDetail get stat;
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+/// ポケモン図鑑 表示項目
 class PokedexItem extends ConsumerWidget {
   const PokedexItem({
     super.key,
@@ -8,7 +9,9 @@ class PokedexItem extends ConsumerWidget {
     required this.children,
   });
 
+  // 項目のタイトル
   final String title;
+  // 表示する内容
   final List<Widget> children;
 
   @override

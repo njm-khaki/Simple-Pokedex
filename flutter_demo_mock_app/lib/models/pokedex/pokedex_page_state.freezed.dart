@@ -153,7 +153,6 @@ abstract class _PokedexLoadingError implements PokedexLoadingError {
 mixin _$PokedexLoaded {
 // ポケモン詳細情報リスト
   List<PokemonDetail> get pokemons => throw _privateConstructorUsedError;
-  String? get previous => throw _privateConstructorUsedError;
   String? get next => throw _privateConstructorUsedError;
 
   /// Create a copy of PokedexLoaded
@@ -169,7 +168,7 @@ abstract class $PokedexLoadedCopyWith<$Res> {
           PokedexLoaded value, $Res Function(PokedexLoaded) then) =
       _$PokedexLoadedCopyWithImpl<$Res, PokedexLoaded>;
   @useResult
-  $Res call({List<PokemonDetail> pokemons, String? previous, String? next});
+  $Res call({List<PokemonDetail> pokemons, String? next});
 }
 
 /// @nodoc
@@ -188,7 +187,6 @@ class _$PokedexLoadedCopyWithImpl<$Res, $Val extends PokedexLoaded>
   @override
   $Res call({
     Object? pokemons = null,
-    Object? previous = freezed,
     Object? next = freezed,
   }) {
     return _then(_value.copyWith(
@@ -196,10 +194,6 @@ class _$PokedexLoadedCopyWithImpl<$Res, $Val extends PokedexLoaded>
           ? _value.pokemons
           : pokemons // ignore: cast_nullable_to_non_nullable
               as List<PokemonDetail>,
-      previous: freezed == previous
-          ? _value.previous
-          : previous // ignore: cast_nullable_to_non_nullable
-              as String?,
       next: freezed == next
           ? _value.next
           : next // ignore: cast_nullable_to_non_nullable
@@ -216,7 +210,7 @@ abstract class _$$PokedexLoadedImplCopyWith<$Res>
       __$$PokedexLoadedImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<PokemonDetail> pokemons, String? previous, String? next});
+  $Res call({List<PokemonDetail> pokemons, String? next});
 }
 
 /// @nodoc
@@ -233,7 +227,6 @@ class __$$PokedexLoadedImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? pokemons = null,
-    Object? previous = freezed,
     Object? next = freezed,
   }) {
     return _then(_$PokedexLoadedImpl(
@@ -241,10 +234,6 @@ class __$$PokedexLoadedImplCopyWithImpl<$Res>
           ? _value._pokemons
           : pokemons // ignore: cast_nullable_to_non_nullable
               as List<PokemonDetail>,
-      previous: freezed == previous
-          ? _value.previous
-          : previous // ignore: cast_nullable_to_non_nullable
-              as String?,
       next: freezed == next
           ? _value.next
           : next // ignore: cast_nullable_to_non_nullable
@@ -257,9 +246,7 @@ class __$$PokedexLoadedImplCopyWithImpl<$Res>
 
 class _$PokedexLoadedImpl implements _PokedexLoaded {
   const _$PokedexLoadedImpl(
-      {final List<PokemonDetail> pokemons = const [],
-      this.previous = null,
-      this.next = null})
+      {final List<PokemonDetail> pokemons = const [], this.next = null})
       : _pokemons = pokemons;
 
 // ポケモン詳細情報リスト
@@ -275,14 +262,11 @@ class _$PokedexLoadedImpl implements _PokedexLoaded {
 
   @override
   @JsonKey()
-  final String? previous;
-  @override
-  @JsonKey()
   final String? next;
 
   @override
   String toString() {
-    return 'PokedexLoaded(pokemons: $pokemons, previous: $previous, next: $next)';
+    return 'PokedexLoaded(pokemons: $pokemons, next: $next)';
   }
 
   @override
@@ -291,14 +275,12 @@ class _$PokedexLoadedImpl implements _PokedexLoaded {
         (other.runtimeType == runtimeType &&
             other is _$PokedexLoadedImpl &&
             const DeepCollectionEquality().equals(other._pokemons, _pokemons) &&
-            (identical(other.previous, previous) ||
-                other.previous == previous) &&
             (identical(other.next, next) || other.next == next));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_pokemons), previous, next);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_pokemons), next);
 
   /// Create a copy of PokedexLoaded
   /// with the given fields replaced by the non-null parameter values.
@@ -312,14 +294,11 @@ class _$PokedexLoadedImpl implements _PokedexLoaded {
 abstract class _PokedexLoaded implements PokedexLoaded {
   const factory _PokedexLoaded(
       {final List<PokemonDetail> pokemons,
-      final String? previous,
       final String? next}) = _$PokedexLoadedImpl;
 
 // ポケモン詳細情報リスト
   @override
   List<PokemonDetail> get pokemons;
-  @override
-  String? get previous;
   @override
   String? get next;
 
@@ -335,7 +314,6 @@ abstract class _PokedexLoaded implements PokedexLoaded {
 mixin _$PokedexAdditionalLoading {
 // ポケモン詳細情報リスト
   List<PokemonDetail> get pokemons => throw _privateConstructorUsedError;
-  String? get previous => throw _privateConstructorUsedError;
   String? get next => throw _privateConstructorUsedError;
 
   /// Create a copy of PokedexAdditionalLoading
@@ -351,7 +329,7 @@ abstract class $PokedexAdditionalLoadingCopyWith<$Res> {
           $Res Function(PokedexAdditionalLoading) then) =
       _$PokedexAdditionalLoadingCopyWithImpl<$Res, PokedexAdditionalLoading>;
   @useResult
-  $Res call({List<PokemonDetail> pokemons, String? previous, String? next});
+  $Res call({List<PokemonDetail> pokemons, String? next});
 }
 
 /// @nodoc
@@ -371,7 +349,6 @@ class _$PokedexAdditionalLoadingCopyWithImpl<$Res,
   @override
   $Res call({
     Object? pokemons = null,
-    Object? previous = freezed,
     Object? next = freezed,
   }) {
     return _then(_value.copyWith(
@@ -379,10 +356,6 @@ class _$PokedexAdditionalLoadingCopyWithImpl<$Res,
           ? _value.pokemons
           : pokemons // ignore: cast_nullable_to_non_nullable
               as List<PokemonDetail>,
-      previous: freezed == previous
-          ? _value.previous
-          : previous // ignore: cast_nullable_to_non_nullable
-              as String?,
       next: freezed == next
           ? _value.next
           : next // ignore: cast_nullable_to_non_nullable
@@ -400,7 +373,7 @@ abstract class _$$PokedexAdditionalLoadingImplCopyWith<$Res>
       __$$PokedexAdditionalLoadingImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<PokemonDetail> pokemons, String? previous, String? next});
+  $Res call({List<PokemonDetail> pokemons, String? next});
 }
 
 /// @nodoc
@@ -419,7 +392,6 @@ class __$$PokedexAdditionalLoadingImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? pokemons = null,
-    Object? previous = freezed,
     Object? next = freezed,
   }) {
     return _then(_$PokedexAdditionalLoadingImpl(
@@ -427,10 +399,6 @@ class __$$PokedexAdditionalLoadingImplCopyWithImpl<$Res>
           ? _value._pokemons
           : pokemons // ignore: cast_nullable_to_non_nullable
               as List<PokemonDetail>,
-      previous: freezed == previous
-          ? _value.previous
-          : previous // ignore: cast_nullable_to_non_nullable
-              as String?,
       next: freezed == next
           ? _value.next
           : next // ignore: cast_nullable_to_non_nullable
@@ -443,9 +411,7 @@ class __$$PokedexAdditionalLoadingImplCopyWithImpl<$Res>
 
 class _$PokedexAdditionalLoadingImpl implements _PokedexAdditionalLoading {
   const _$PokedexAdditionalLoadingImpl(
-      {final List<PokemonDetail> pokemons = const [],
-      this.previous = null,
-      this.next = null})
+      {final List<PokemonDetail> pokemons = const [], this.next = null})
       : _pokemons = pokemons;
 
 // ポケモン詳細情報リスト
@@ -461,14 +427,11 @@ class _$PokedexAdditionalLoadingImpl implements _PokedexAdditionalLoading {
 
   @override
   @JsonKey()
-  final String? previous;
-  @override
-  @JsonKey()
   final String? next;
 
   @override
   String toString() {
-    return 'PokedexAdditionalLoading(pokemons: $pokemons, previous: $previous, next: $next)';
+    return 'PokedexAdditionalLoading(pokemons: $pokemons, next: $next)';
   }
 
   @override
@@ -477,14 +440,12 @@ class _$PokedexAdditionalLoadingImpl implements _PokedexAdditionalLoading {
         (other.runtimeType == runtimeType &&
             other is _$PokedexAdditionalLoadingImpl &&
             const DeepCollectionEquality().equals(other._pokemons, _pokemons) &&
-            (identical(other.previous, previous) ||
-                other.previous == previous) &&
             (identical(other.next, next) || other.next == next));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_pokemons), previous, next);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_pokemons), next);
 
   /// Create a copy of PokedexAdditionalLoading
   /// with the given fields replaced by the non-null parameter values.
@@ -499,14 +460,11 @@ class _$PokedexAdditionalLoadingImpl implements _PokedexAdditionalLoading {
 abstract class _PokedexAdditionalLoading implements PokedexAdditionalLoading {
   const factory _PokedexAdditionalLoading(
       {final List<PokemonDetail> pokemons,
-      final String? previous,
       final String? next}) = _$PokedexAdditionalLoadingImpl;
 
 // ポケモン詳細情報リスト
   @override
   List<PokemonDetail> get pokemons;
-  @override
-  String? get previous;
   @override
   String? get next;
 
@@ -522,7 +480,6 @@ abstract class _PokedexAdditionalLoading implements PokedexAdditionalLoading {
 mixin _$PokedexAdditionalError {
 // ポケモン詳細情報リスト
   List<PokemonDetail> get pokemons => throw _privateConstructorUsedError;
-  String? get previous => throw _privateConstructorUsedError;
   String? get next => throw _privateConstructorUsedError;
 
   /// Create a copy of PokedexAdditionalError
@@ -538,7 +495,7 @@ abstract class $PokedexAdditionalErrorCopyWith<$Res> {
           $Res Function(PokedexAdditionalError) then) =
       _$PokedexAdditionalErrorCopyWithImpl<$Res, PokedexAdditionalError>;
   @useResult
-  $Res call({List<PokemonDetail> pokemons, String? previous, String? next});
+  $Res call({List<PokemonDetail> pokemons, String? next});
 }
 
 /// @nodoc
@@ -558,7 +515,6 @@ class _$PokedexAdditionalErrorCopyWithImpl<$Res,
   @override
   $Res call({
     Object? pokemons = null,
-    Object? previous = freezed,
     Object? next = freezed,
   }) {
     return _then(_value.copyWith(
@@ -566,10 +522,6 @@ class _$PokedexAdditionalErrorCopyWithImpl<$Res,
           ? _value.pokemons
           : pokemons // ignore: cast_nullable_to_non_nullable
               as List<PokemonDetail>,
-      previous: freezed == previous
-          ? _value.previous
-          : previous // ignore: cast_nullable_to_non_nullable
-              as String?,
       next: freezed == next
           ? _value.next
           : next // ignore: cast_nullable_to_non_nullable
@@ -587,7 +539,7 @@ abstract class _$$PokedexAdditionalErrorImplCopyWith<$Res>
       __$$PokedexAdditionalErrorImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<PokemonDetail> pokemons, String? previous, String? next});
+  $Res call({List<PokemonDetail> pokemons, String? next});
 }
 
 /// @nodoc
@@ -606,7 +558,6 @@ class __$$PokedexAdditionalErrorImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? pokemons = null,
-    Object? previous = freezed,
     Object? next = freezed,
   }) {
     return _then(_$PokedexAdditionalErrorImpl(
@@ -614,10 +565,6 @@ class __$$PokedexAdditionalErrorImplCopyWithImpl<$Res>
           ? _value._pokemons
           : pokemons // ignore: cast_nullable_to_non_nullable
               as List<PokemonDetail>,
-      previous: freezed == previous
-          ? _value.previous
-          : previous // ignore: cast_nullable_to_non_nullable
-              as String?,
       next: freezed == next
           ? _value.next
           : next // ignore: cast_nullable_to_non_nullable
@@ -630,9 +577,7 @@ class __$$PokedexAdditionalErrorImplCopyWithImpl<$Res>
 
 class _$PokedexAdditionalErrorImpl implements _PokedexAdditionalError {
   const _$PokedexAdditionalErrorImpl(
-      {final List<PokemonDetail> pokemons = const [],
-      this.previous = null,
-      this.next = null})
+      {final List<PokemonDetail> pokemons = const [], this.next = null})
       : _pokemons = pokemons;
 
 // ポケモン詳細情報リスト
@@ -648,14 +593,11 @@ class _$PokedexAdditionalErrorImpl implements _PokedexAdditionalError {
 
   @override
   @JsonKey()
-  final String? previous;
-  @override
-  @JsonKey()
   final String? next;
 
   @override
   String toString() {
-    return 'PokedexAdditionalError(pokemons: $pokemons, previous: $previous, next: $next)';
+    return 'PokedexAdditionalError(pokemons: $pokemons, next: $next)';
   }
 
   @override
@@ -664,14 +606,12 @@ class _$PokedexAdditionalErrorImpl implements _PokedexAdditionalError {
         (other.runtimeType == runtimeType &&
             other is _$PokedexAdditionalErrorImpl &&
             const DeepCollectionEquality().equals(other._pokemons, _pokemons) &&
-            (identical(other.previous, previous) ||
-                other.previous == previous) &&
             (identical(other.next, next) || other.next == next));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_pokemons), previous, next);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_pokemons), next);
 
   /// Create a copy of PokedexAdditionalError
   /// with the given fields replaced by the non-null parameter values.
@@ -686,14 +626,11 @@ class _$PokedexAdditionalErrorImpl implements _PokedexAdditionalError {
 abstract class _PokedexAdditionalError implements PokedexAdditionalError {
   const factory _PokedexAdditionalError(
       {final List<PokemonDetail> pokemons,
-      final String? previous,
       final String? next}) = _$PokedexAdditionalErrorImpl;
 
 // ポケモン詳細情報リスト
   @override
   List<PokemonDetail> get pokemons;
-  @override
-  String? get previous;
   @override
   String? get next;
 

@@ -20,9 +20,10 @@ PokemonAbility _$PokemonAbilityFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PokemonAbility {
-  int get slot => throw _privateConstructorUsedError;
+// 特性番号
+  int get slot => throw _privateConstructorUsedError; // 隠し特性(夢特性)フラグ
   @JsonKey(name: 'is_hidden')
-  bool get isHidden => throw _privateConstructorUsedError;
+  bool get isHidden => throw _privateConstructorUsedError; // 特性詳細情報
   PokemonAbilityDetail get ability => throw _privateConstructorUsedError;
 
   /// Serializes this PokemonAbility to a JSON map.
@@ -157,11 +158,14 @@ class _$PokemonAbilityImpl implements _PokemonAbility {
   factory _$PokemonAbilityImpl.fromJson(Map<String, dynamic> json) =>
       _$$PokemonAbilityImplFromJson(json);
 
+// 特性番号
   @override
   final int slot;
+// 隠し特性(夢特性)フラグ
   @override
   @JsonKey(name: 'is_hidden')
   final bool isHidden;
+// 特性詳細情報
   @override
   final PokemonAbilityDetail ability;
 
@@ -211,11 +215,12 @@ abstract class _PokemonAbility implements PokemonAbility {
   factory _PokemonAbility.fromJson(Map<String, dynamic> json) =
       _$PokemonAbilityImpl.fromJson;
 
+// 特性番号
   @override
-  int get slot;
+  int get slot; // 隠し特性(夢特性)フラグ
   @override
   @JsonKey(name: 'is_hidden')
-  bool get isHidden;
+  bool get isHidden; // 特性詳細情報
   @override
   PokemonAbilityDetail get ability;
 

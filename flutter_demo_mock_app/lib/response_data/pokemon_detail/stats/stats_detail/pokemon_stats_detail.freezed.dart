@@ -20,7 +20,8 @@ PokemonStatsDetail _$PokemonStatsDetailFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PokemonStatsDetail {
-  String get name => throw _privateConstructorUsedError;
+// 種族値 項目名
+  String get name => throw _privateConstructorUsedError; // 種族値情報詳細URL
   String get url => throw _privateConstructorUsedError;
 
   /// Serializes this PokemonStatsDetail to a JSON map.
@@ -121,8 +122,10 @@ class _$PokemonStatsDetailImpl implements _PokemonStatsDetail {
   factory _$PokemonStatsDetailImpl.fromJson(Map<String, dynamic> json) =>
       _$$PokemonStatsDetailImplFromJson(json);
 
+// 種族値 項目名
   @override
   final String name;
+// 種族値情報詳細URL
   @override
   final String url;
 
@@ -169,8 +172,9 @@ abstract class _PokemonStatsDetail implements PokemonStatsDetail {
   factory _PokemonStatsDetail.fromJson(Map<String, dynamic> json) =
       _$PokemonStatsDetailImpl.fromJson;
 
+// 種族値 項目名
   @override
-  String get name;
+  String get name; // 種族値情報詳細URL
   @override
   String get url;
 

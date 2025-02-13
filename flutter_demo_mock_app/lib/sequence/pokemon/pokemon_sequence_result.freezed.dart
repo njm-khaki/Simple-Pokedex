@@ -17,8 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$PokemonSequenceResult {
 // ポケモン詳細情報リスト
-  List<PokemonDetail> get pokemons => throw _privateConstructorUsedError;
-  String? get previous => throw _privateConstructorUsedError;
+  List<PokemonDetail> get pokemons =>
+      throw _privateConstructorUsedError; // 次の取得URL
   String? get next => throw _privateConstructorUsedError;
 
   /// Create a copy of PokemonSequenceResult
@@ -34,7 +34,7 @@ abstract class $PokemonSequenceResultCopyWith<$Res> {
           $Res Function(PokemonSequenceResult) then) =
       _$PokemonSequenceResultCopyWithImpl<$Res, PokemonSequenceResult>;
   @useResult
-  $Res call({List<PokemonDetail> pokemons, String? previous, String? next});
+  $Res call({List<PokemonDetail> pokemons, String? next});
 }
 
 /// @nodoc
@@ -54,7 +54,6 @@ class _$PokemonSequenceResultCopyWithImpl<$Res,
   @override
   $Res call({
     Object? pokemons = null,
-    Object? previous = freezed,
     Object? next = freezed,
   }) {
     return _then(_value.copyWith(
@@ -62,10 +61,6 @@ class _$PokemonSequenceResultCopyWithImpl<$Res,
           ? _value.pokemons
           : pokemons // ignore: cast_nullable_to_non_nullable
               as List<PokemonDetail>,
-      previous: freezed == previous
-          ? _value.previous
-          : previous // ignore: cast_nullable_to_non_nullable
-              as String?,
       next: freezed == next
           ? _value.next
           : next // ignore: cast_nullable_to_non_nullable
@@ -83,7 +78,7 @@ abstract class _$$PokemonSequenceResultImplCopyWith<$Res>
       __$$PokemonSequenceResultImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<PokemonDetail> pokemons, String? previous, String? next});
+  $Res call({List<PokemonDetail> pokemons, String? next});
 }
 
 /// @nodoc
@@ -101,7 +96,6 @@ class __$$PokemonSequenceResultImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? pokemons = null,
-    Object? previous = freezed,
     Object? next = freezed,
   }) {
     return _then(_$PokemonSequenceResultImpl(
@@ -109,10 +103,6 @@ class __$$PokemonSequenceResultImplCopyWithImpl<$Res>
           ? _value._pokemons
           : pokemons // ignore: cast_nullable_to_non_nullable
               as List<PokemonDetail>,
-      previous: freezed == previous
-          ? _value.previous
-          : previous // ignore: cast_nullable_to_non_nullable
-              as String?,
       next: freezed == next
           ? _value.next
           : next // ignore: cast_nullable_to_non_nullable
@@ -125,9 +115,7 @@ class __$$PokemonSequenceResultImplCopyWithImpl<$Res>
 
 class _$PokemonSequenceResultImpl implements _PokemonSequenceResult {
   const _$PokemonSequenceResultImpl(
-      {final List<PokemonDetail> pokemons = const [],
-      this.previous = null,
-      this.next = null})
+      {final List<PokemonDetail> pokemons = const [], this.next = null})
       : _pokemons = pokemons;
 
 // ポケモン詳細情報リスト
@@ -141,16 +129,14 @@ class _$PokemonSequenceResultImpl implements _PokemonSequenceResult {
     return EqualUnmodifiableListView(_pokemons);
   }
 
-  @override
-  @JsonKey()
-  final String? previous;
+// 次の取得URL
   @override
   @JsonKey()
   final String? next;
 
   @override
   String toString() {
-    return 'PokemonSequenceResult(pokemons: $pokemons, previous: $previous, next: $next)';
+    return 'PokemonSequenceResult(pokemons: $pokemons, next: $next)';
   }
 
   @override
@@ -159,14 +145,12 @@ class _$PokemonSequenceResultImpl implements _PokemonSequenceResult {
         (other.runtimeType == runtimeType &&
             other is _$PokemonSequenceResultImpl &&
             const DeepCollectionEquality().equals(other._pokemons, _pokemons) &&
-            (identical(other.previous, previous) ||
-                other.previous == previous) &&
             (identical(other.next, next) || other.next == next));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_pokemons), previous, next);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_pokemons), next);
 
   /// Create a copy of PokemonSequenceResult
   /// with the given fields replaced by the non-null parameter values.
@@ -181,14 +165,11 @@ class _$PokemonSequenceResultImpl implements _PokemonSequenceResult {
 abstract class _PokemonSequenceResult implements PokemonSequenceResult {
   const factory _PokemonSequenceResult(
       {final List<PokemonDetail> pokemons,
-      final String? previous,
       final String? next}) = _$PokemonSequenceResultImpl;
 
 // ポケモン詳細情報リスト
   @override
-  List<PokemonDetail> get pokemons;
-  @override
-  String? get previous;
+  List<PokemonDetail> get pokemons; // 次の取得URL
   @override
   String? get next;
 

@@ -81,7 +81,9 @@ class PokemonDetailLoadedContents extends ConsumerWidget {
                           .map(
                             (stat) => Padding(
                               padding: EdgeInsets.only(left: 4),
-                              child: Text('${stat.stat.name}:${stat.baseStat}'),
+                              child: Text(
+                                '${stat.stat.name}: ${stat.baseStat}',
+                              ),
                             ),
                           )
                           .toList(),

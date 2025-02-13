@@ -20,7 +20,8 @@ PokemonType _$PokemonTypeFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PokemonType {
-  int get slot => throw _privateConstructorUsedError;
+// タイプ番号
+  int get slot => throw _privateConstructorUsedError; // タイプ詳細情報
   PokemonTypeDetail get type => throw _privateConstructorUsedError;
 
   /// Serializes this PokemonType to a JSON map.
@@ -136,8 +137,10 @@ class _$PokemonTypeImpl implements _PokemonType {
   factory _$PokemonTypeImpl.fromJson(Map<String, dynamic> json) =>
       _$$PokemonTypeImplFromJson(json);
 
+// タイプ番号
   @override
   final int slot;
+// タイプ詳細情報
   @override
   final PokemonTypeDetail type;
 
@@ -183,8 +186,9 @@ abstract class _PokemonType implements PokemonType {
   factory _PokemonType.fromJson(Map<String, dynamic> json) =
       _$PokemonTypeImpl.fromJson;
 
+// タイプ番号
   @override
-  int get slot;
+  int get slot; // タイプ詳細情報
   @override
   PokemonTypeDetail get type;
 
