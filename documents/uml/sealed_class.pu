@@ -1,0 +1,24 @@
+@startuml
+!definelong s(x,y1)
+class x <<(S,magenta)>> {
+}
+y1 <|-- x
+!enddefinelong
+
+class XXXPageState <<S, magenta>> {}
+note left
+sealedクラスにして他ファイルでは継承不可にする
+継承先を同一ファイルで定義されたクラスに限定する
+end note
+
+class Initialization {}
+
+class Loaded {}
+
+class Reloading {}
+
+XXXPageState <|-- Initialization
+XXXPageState <|-- Loaded
+XXXPageState <|-- Reloading
+
+@enduml

@@ -1,0 +1,12 @@
+@startuml
+
+Object XXX画面
+Object 初期化中
+Object 読み込み済
+Object リロード中
+
+XXX画面 .. 初期化中
+XXX画面 .. 読み込み済
+XXX画面 .. リロード中
+
+@enduml
