@@ -1,5 +1,6 @@
 import 'package:flutter_demo_mock_app/response_data/pokemon_detail/ability/pokemon_ability.dart';
 import 'package:flutter_demo_mock_app/response_data/pokemon_detail/sprite/pokemon_sprite.dart';
+import 'package:flutter_demo_mock_app/response_data/pokemon_detail/stats/pokemon_stats.dart';
 import 'package:flutter_demo_mock_app/response_data/pokemon_detail/type/pokemon_type.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -22,6 +23,8 @@ class PokemonDetail with _$PokemonDetail {
     required int weight,
     // 特性
     required List<PokemonAbility> abilities,
+    // 種族値
+    required List<PokemonStats> stats,
   }) = _PokemonDetail;
 
   /// JSONより変換
