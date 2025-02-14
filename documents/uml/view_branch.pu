@@ -1,0 +1,78 @@
+@startuml
+!definelong s(x,y1)
+class x <<(S,magenta)>> {
+}
+y1 <|-- x
+!enddefinelong
+
+folder "ui" as UI {
+    class XXXPage {}
+
+    folder "templates" as Templates {
+        class InitializationContents {
+            state: Initialization
+            notifier: InitializationCase
+        }
+
+        class LoadedContents {
+            state: Loaded
+            notifier: LoadedCase
+        }
+
+        class ReLoadingContents {
+            state: ReLoading
+            notifier: ReLoadingCase
+        }
+    }
+}
+
+folder "states" as States {
+    class XXXState<XXXPageState> {
+        state: XXXPageState
+    }
+}
+
+folder "models" as Models {
+    class XXXPageState <<(S,magenta)>> {}
+    note left
+    画面の状態を示すsealedクラス
+    各状態のクラスに継承させる
+    end note
+
+    class Initialization {}
+
+    class Loaded {
+        dataList List<XXXItem>
+    }
+
+    class ReLoading {}
+}
+
+folder "usecase" as Usecase {
+    interface InitializationCase {}
+
+    interface LoadedCase {
+        onClickReloadButton(): Future<void>
+    }
+
+    interface ReLoadingCase {}
+}
+
+XXXPage <.. XXXState
+
+XXXState <.. XXXPageState
+
+XXXPageState <|-- Initialization
+XXXPageState <|-- Loaded
+XXXPageState <|-- ReLoading
+
+XXXState <|.. Usecase
+
+XXXPage -- InitializationContents : includes <
+XXXPage -- LoadedContents : includes <
+XXXPage -- ReLoadingContents : includes <
+
+note "各状態でのモデルとユーザーイベントのみを参照することで\n異なる状態の値・関数を参照できないようにする" as TemplatesComment
+Templates .. TemplatesComment
+
+@enduml

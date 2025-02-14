@@ -40,13 +40,13 @@ package ui {
 }
 
 package states {
-    class XXXState {
+    class XXXState<XXXPageState> {
         state: XXXPageState
     }
 }
 
 package flutter_rivrepod {
-    abstract class Notifier<XXXPageState> {}
+    abstract class Notifier<T> {}
 }
 
 folder "models" as Models {
