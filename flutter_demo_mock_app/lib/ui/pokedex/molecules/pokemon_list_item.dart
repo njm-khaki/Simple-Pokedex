@@ -24,10 +24,9 @@ class PokemonListItem extends ConsumerWidget {
     return Column(
       children: [
         ListTile(
-          leading: Image.network(
-            pokemon.sprites.frontDefault ??
-                "https://pokeboon.com/jp/wp-content/uploads/2019/05/no-image_pokemon.png",
-          ),
+          leading: pokemon.sprites.frontDefault != null
+              ? Image.network(pokemon.sprites.frontDefault ?? "")
+              : Image.asset('assets/images/no_image_pokemon.png'),
           title: Text(
             pokemon.name,
             style: Theme.of(context).textTheme.titleLarge,
