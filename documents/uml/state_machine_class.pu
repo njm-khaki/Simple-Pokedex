@@ -1,0 +1,19 @@
+@startuml
+
+abstract class XXXPageState {}
+note left
+画面の状態を抽象化
+各状態に継承させる
+end note
+
+class Initialization {}
+
+class Loaded {}
+
+class Reloading {}
+
+XXXPageState <|-- Initialization
+XXXPageState <|-- Loaded
+XXXPageState <|-- Reloading
+
+@enduml

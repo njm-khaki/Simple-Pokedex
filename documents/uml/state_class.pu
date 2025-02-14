@@ -1,0 +1,60 @@
+@startuml
+!definelong s(x,y1)
+class x <<(S,magenta)>> {
+}
+y1 <|-- x
+!enddefinelong
+
+folder "ui" as UI {
+    class XXXPage {}
+}
+
+folder "states" as States {
+    class XXXState<XXXPageState> {
+        state: XXXPageState
+    }
+}
+
+folder "models" as Models {
+    class XXXPageState <<(S,magenta)>> {}
+    note left
+    画面の状態を示すsealedクラス
+    各状態のクラスに継承させる
+    end note
+
+    class Initialization {}
+
+    class Loaded {
+        dataList List<XXXItem>
+    }
+
+    class ReLoading {}
+}
+
+package flutter_rivrepod {
+    abstract class Notifier<T> {}
+}
+
+folder "usecase" as Usecase {
+    interface InitializationCase {}
+
+    interface LoadedCase {
+        onClickReloadButton(): Future<void>
+    }
+
+    interface ReLoadingCase {}
+}
+
+XXXPage <.. XXXState : 状態を更新したら画面を再描画させる
+
+XXXState <|--- Notifier
+
+XXXState <.. XXXPageState : 状態を抽象化\n複数の状態を扱えるようにする
+
+XXXPageState <|-- Initialization
+XXXPageState <|-- Loaded
+XXXPageState <|-- ReLoading
+
+XXXState <|.. Usecase : 各状態でのユーザーイベントを定義\n状態管理クラスに適用して実装を強制させる
+
+@enduml

@@ -1,5 +1,11 @@
 @startuml
 
+!definelong s(x,y1)
+class x <<(S,magenta)>> {
+}
+y1 <|-- x
+!enddefinelong
+
 class App {}
 
 folder "routes" as Routes {
@@ -40,17 +46,17 @@ package ui {
 }
 
 package states {
-    class XXXState {
+    class XXXState<XXXPageState> {
         state: XXXPageState
     }
 }
 
 package flutter_rivrepod {
-    abstract class Notifier<XXXPageState> {}
+    abstract class Notifier<T> {}
 }
 
 folder "models" as Models {
-    class XXXPageState {}
+    class XXXPageState <<(S,magenta)>> {}
     note left
     画面の状態を示すsealedクラス
     各状態のクラスに継承させる

@@ -1,0 +1,23 @@
+@startuml
+
+class App {}
+
+folder "routes" as Routes {
+    class GoRouter {}
+}
+
+folder "ui" as UI {
+    class MainPage {}
+    class XXXPage {}
+    class YYYPage {}
+    class ZZZage {}
+}
+
+
+App --> Routes
+Routes --> UI
+
+note "画面本体" as UIComments
+UI ... UIComments
+
+@enduml
