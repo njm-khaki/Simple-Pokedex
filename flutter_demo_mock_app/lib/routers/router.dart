@@ -11,13 +11,6 @@ final router = GoRouter(
   routes: [
     GoRoute(
       path: '/',
-      name: 'login',
-      pageBuilder: (context, state) => MaterialPage(
-        child: LoginPage(),
-      ),
-    ),
-    GoRoute(
-      path: '/pokedex',
       name: 'pokedex',
       pageBuilder: (context, state) => MaterialPage(
         child: PokedexPage(),

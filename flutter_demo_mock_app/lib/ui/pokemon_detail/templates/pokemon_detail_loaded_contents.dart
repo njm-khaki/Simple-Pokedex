@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demo_mock_app/models/pokemon_detail/pokemon_detail_page_state.dart';
 import 'package:flutter_demo_mock_app/response_data/pokemon_detail/pokemon_detail.dart';
 import 'package:flutter_demo_mock_app/states/pokemon_detail/usecase/pokemon_detail_loaded_case.dart';
-import 'package:flutter_demo_mock_app/ui/pokemon_detail/organism/pokedex_item.dart';
+import 'package:flutter_demo_mock_app/ui/pokemon_detail/organisms/pokedex_item.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quiver/iterables.dart';
 
@@ -45,8 +45,9 @@ class PokemonDetailLoadedContents extends ConsumerWidget {
                       );
                     },
                   )
-                : Image.network(
-                    "https://pokeboon.com/jp/wp-content/uploads/2019/05/no-image_pokemon.png",
+                : SizedBox(
+                    height: MediaQuery.of(context).size.height / 4,
+                    child: Image.asset('assets/images/no_image_pokemon.png'),
                   ),
             Divider(),
             PokedexItem(
