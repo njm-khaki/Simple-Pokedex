@@ -1,5 +1,11 @@
 @startuml
 
+!definelong s(x,y1)
+class x <<(S,magenta)>> {
+}
+y1 <|-- x
+!enddefinelong
+
 class App {}
 
 folder "routes" as Routes {
@@ -50,7 +56,7 @@ package flutter_rivrepod {
 }
 
 folder "models" as Models {
-    class XXXPageState {}
+    class XXXPageState <<(S,magenta)>> {}
     note left
     画面の状態を示すsealedクラス
     各状態のクラスに継承させる
