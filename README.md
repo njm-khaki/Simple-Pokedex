@@ -1,8 +1,8 @@
-# Flutter-Demo-Mock-App
+# Simple-Pokedex
 
 Demo app using Dio mocking in Flutter
 
-- [Flutter-Demo-Mock-App](#flutter-demo-mock-app)
+- [Simple-Pokedex](#simple-pokedex)
   - [概要](#概要)
   - [環境](#環境)
   - [環境構築・実行方法](#環境構築実行方法)
@@ -11,8 +11,10 @@ Demo app using Dio mocking in Flutter
 
 ## 概要
 
-- FlutterアプリでHTTP通信を行うのにモックを用いたアプリの試作
-- また、状態管理など基本的な設計の見直し
+- シンプルなポケモン図鑑の実装
+- また、以下はサブ目的
+  - FlutterアプリでHTTP通信を行うのにモックを用いたアプリの試作
+  - また、状態管理など基本的な設計の見直し
 
 ## 環境
 
