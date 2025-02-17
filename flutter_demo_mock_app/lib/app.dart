@@ -15,9 +15,17 @@ class App extends StatelessWidget {
         routerDelegate: router.routerDelegate,
         routeInformationParser: router.routeInformationParser,
         routeInformationProvider: router.routeInformationProvider,
+        // テーマの設定
         theme: ThemeData(
           colorSchemeSeed: Colors.cyan,
         ),
+        darkTheme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.cyan,
+            brightness: Brightness.dark,
+          ),
+        ),
+        themeMode: ThemeMode.system,
       ),
     );
   }
