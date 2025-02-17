@@ -6,6 +6,7 @@ Demo app using Dio mocking in Flutter
   - [概要](#概要)
   - [環境](#環境)
   - [環境構築・実行方法](#環境構築実行方法)
+    - [Web向けリリース](#web向けリリース)
   - [資料](#資料)
     - [設計資料](#設計資料)
 
@@ -46,6 +47,15 @@ flutter pub get
 ```bash
 flutter run
 ```
+
+### Web向けリリース
+- [Github.io](https://njm-khaki.github.io/Simple-Pokedex/)で公開している
+
+- 以下のコマンドでWeb向けのリリースビルドを実施
+  - `build/web`のファイルを`docs`へコピー
+  - 作業完了後に`main`ブランチから`release`ブランチへマージすることで公開完了
+
+> flutter build web --release --base-href /Simple-Pokedex/
 
 ## 資料
 
