@@ -5,9 +5,12 @@ import 'package:flutter_demo_mock_app/response_data/pokemon_detail/pokemon_detai
 import 'package:flutter_demo_mock_app/response_data/result.dart';
 import 'package:flutter_demo_mock_app/sequence/pokemon/pokemon_sequence_result.dart';
 
+/// ポケモン一覧取得シーケンス
 final class PokemonSequence {
   final _pokeApi = PokemonApi();
 
+  /// ポケモン一覧取得
+  /// ポケモン一覧取得URLを[url]で渡す
   Future<Result<PokemonSequenceResult, Exception>> getPokemonList({
     String? url,
   }) async {

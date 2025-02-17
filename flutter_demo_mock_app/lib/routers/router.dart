@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo_mock_app/response_data/pokemon_detail/pokemon_detail.dart';
-import 'package:flutter_demo_mock_app/ui/login/login_page.dart';
 import 'package:flutter_demo_mock_app/ui/pokedex/pokedex_page.dart';
 import 'package:flutter_demo_mock_app/ui/pokemon_detail/pokemon_detail_page.dart';
 import 'package:go_router/go_router.dart';
