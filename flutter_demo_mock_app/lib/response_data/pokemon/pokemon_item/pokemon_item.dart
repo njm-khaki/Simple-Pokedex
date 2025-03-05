@@ -12,7 +12,7 @@ class PokemonItem with _$PokemonItem {
     // ポケモン情報取得URL
     @Default("") String url,
     // ポケモン画像 URL
-    @Default("") String image,
+    @Default(null) String? image,
   }) = _PokemonItem;
 
   /// JSONより変換
