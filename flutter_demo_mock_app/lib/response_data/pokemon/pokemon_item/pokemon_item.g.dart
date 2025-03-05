@@ -10,7 +10,7 @@ _$PokemonItemImpl _$$PokemonItemImplFromJson(Map<String, dynamic> json) =>
     _$PokemonItemImpl(
       name: json['name'] as String? ?? "",
       url: json['url'] as String? ?? "",
-      image: json['image'] as String? ?? "",
+      image: json['image'] as String? ?? null,
     );
 
 Map<String, dynamic> _$$PokemonItemImplToJson(_$PokemonItemImpl instance) =>

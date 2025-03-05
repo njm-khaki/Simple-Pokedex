@@ -23,7 +23,7 @@ mixin _$PokemonItem {
 // ポケモン名
   String get name => throw _privateConstructorUsedError; // ポケモン情報取得URL
   String get url => throw _privateConstructorUsedError; // ポケモン画像 URL
-  String get image => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
 
   /// Serializes this PokemonItem to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -41,7 +41,7 @@ abstract class $PokemonItemCopyWith<$Res> {
           PokemonItem value, $Res Function(PokemonItem) then) =
       _$PokemonItemCopyWithImpl<$Res, PokemonItem>;
   @useResult
-  $Res call({String name, String url, String image});
+  $Res call({String name, String url, String? image});
 }
 
 /// @nodoc
@@ -61,7 +61,7 @@ class _$PokemonItemCopyWithImpl<$Res, $Val extends PokemonItem>
   $Res call({
     Object? name = null,
     Object? url = null,
-    Object? image = null,
+    Object? image = freezed,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -72,10 +72,10 @@ class _$PokemonItemCopyWithImpl<$Res, $Val extends PokemonItem>
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
-      image: null == image
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -88,7 +88,7 @@ abstract class _$$PokemonItemImplCopyWith<$Res>
       __$$PokemonItemImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String url, String image});
+  $Res call({String name, String url, String? image});
 }
 
 /// @nodoc
@@ -106,7 +106,7 @@ class __$$PokemonItemImplCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
     Object? url = null,
-    Object? image = null,
+    Object? image = freezed,
   }) {
     return _then(_$PokemonItemImpl(
       name: null == name
@@ -117,10 +117,10 @@ class __$$PokemonItemImplCopyWithImpl<$Res>
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
-      image: null == image
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -128,7 +128,7 @@ class __$$PokemonItemImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$PokemonItemImpl implements _PokemonItem {
-  const _$PokemonItemImpl({this.name = "", this.url = "", this.image = ""});
+  const _$PokemonItemImpl({this.name = "", this.url = "", this.image = null});
 
   factory _$PokemonItemImpl.fromJson(Map<String, dynamic> json) =>
       _$$PokemonItemImplFromJson(json);
@@ -144,7 +144,7 @@ class _$PokemonItemImpl implements _PokemonItem {
 // ポケモン画像 URL
   @override
   @JsonKey()
-  final String image;
+  final String? image;
 
   @override
   String toString() {
@@ -185,7 +185,7 @@ abstract class _PokemonItem implements PokemonItem {
   const factory _PokemonItem(
       {final String name,
       final String url,
-      final String image}) = _$PokemonItemImpl;
+      final String? image}) = _$PokemonItemImpl;
 
   factory _PokemonItem.fromJson(Map<String, dynamic> json) =
       _$PokemonItemImpl.fromJson;
@@ -196,7 +196,7 @@ abstract class _PokemonItem implements PokemonItem {
   @override
   String get url; // ポケモン画像 URL
   @override
-  String get image;
+  String? get image;
 
   /// Create a copy of PokemonItem
   /// with the given fields replaced by the non-null parameter values.

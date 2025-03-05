@@ -7,6 +7,7 @@ import 'package:flutter_demo_mock_app/sequence/pokemon/pokemon_sequence_result.d
 
 /// ポケモン一覧取得シーケンス
 final class PokemonSequence {
+  /// ポケモンAPI HTTPクライアント
   final _pokeApi = PokemonApi();
 
   /// ポケモン一覧取得
@@ -14,38 +15,48 @@ final class PokemonSequence {
   Future<Result<PokemonSequenceResult, Exception>> getPokemonList({
     String? url,
   }) async {
+    // ポケモン一覧の取得
     final response = await _pokeApi.getPokemonOrderLimit(
       url: url,
     );
 
+    // 何かしらの異常系なら終了
     if (response is Failure<Pokemon, Exception>) {
       return Failure(response.exception);
     }
 
-    Pokemon poke = Pokemon(count: 0);
-    final List<PokemonDetail> pokeList = [];
-    if (response is Success<Pokemon, Exception>) {
-      poke = response.value;
+    // 型チェック 正常系であることを確認
+    if (response is! Success<Pokemon, Exception>) {
+      return Failure(Exception());
     }
 
+    // ポケモン詳細情報リスト
+    final List<PokemonDetail> pokeList = [];
+
     // 各ポケモンの詳細情報を受け取る
-    for (PokemonItem item in poke.results) {
+    for (PokemonItem item in response.value.results) {
       // ポケモンの詳細情報を取得
       final response = await _pokeApi.getPokemonDetailByIndex(item.url);
 
+      // ポケモン詳細情報の取得に失敗しらら終了
       if (response is Failure<PokemonDetail, Exception>) {
         return Failure(response.exception);
       }
 
-      if (response is Success<PokemonDetail, Exception>) {
-        pokeList.add(response.value);
+      // 型チェック 正常系であることを確認
+      if (response is! Success<PokemonDetail, Exception>) {
+        continue;
       }
+
+      // 取得したポケモン詳細情報を追加
+      pokeList.add(response.value);
     }
 
+    // ポケモン一覧を返却
     return Success(
       PokemonSequenceResult(
         pokemons: pokeList,
-        next: poke.next,
+        next: response.value.next,
       ),
     );
   }
