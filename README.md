@@ -32,13 +32,20 @@ Demo app using Dio mocking in Flutter
 
 - 以下のコマンドでクローン
 
-> git clone https://github.com/njm-khaki/Flutter-Demo-Mock-App.git
+> git clone https://github.com/njm-khaki/Simple-Pokedex.git
 
 - 以下のコマンドでパッケージを取得
 
 ```bash
 cd flutter_demo_mock_app
 flutter pub get
+```
+
+- 環境変数ファイルを作成
+  - 必要に応じて内容を更新
+
+```bash
+cp .env.sample .env
 ```
 
 - 以下のコマンドで実行
